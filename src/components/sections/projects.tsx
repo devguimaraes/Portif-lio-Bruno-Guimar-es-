@@ -219,9 +219,9 @@ export function Projects() {
                   <div className="absolute top-3 right-3">
                     <Badge 
                       variant="secondary" 
-                      className={`${statusConfig[project.status].color} text-white`}
+                      className={`${statusConfig[project.status as keyof typeof statusConfig].color} text-white`}
                     >
-                      {statusConfig[project.status].label}
+{statusConfig[project.status as keyof typeof statusConfig].label}
                     </Badge>
                   </div>
 

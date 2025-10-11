@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu, X, Moon, Sun } from 'lucide-react'
+import { Menu, X, Moon, Sun, Link } from 'lucide-react'
 
 // Hook para controle do tema
 function useTheme() {
@@ -116,9 +116,9 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <a href="/" className="text-xl font-bold text-foreground">
+            <Link href="/" className="text-xl font-bold text-foreground">
               Bruno<span className="text-accent">.</span>
-            </a>
+            </Link>
           </motion.div>
 
           {/* Navegação Desktop */}
