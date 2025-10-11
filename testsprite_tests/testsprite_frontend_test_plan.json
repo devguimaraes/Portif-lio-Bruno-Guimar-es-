@@ -1,0 +1,287 @@
+{
+  "id": "frontend-test-plan-001",
+  "title": "Plano de Testes Frontend - Portfólio Bruno Guimarães",
+  "description": "Plano abrangente de testes automatizados para o portfólio profissional, incluindo testes funcionais, de responsividade, performance e acessibilidade",
+  "project_name": "Portfólio Bruno Guimarães",
+  "project_type": "frontend",
+  "base_url": "http://localhost:3000",
+  "steps": [
+    "Executar testes de navegação e funcionalidade",
+    "Verificar responsividade em diferentes dispositivos",
+    "Testar performance e carregamento",
+    "Validar acessibilidade e usabilidade"
+  ],
+  "test_categories": [
+    {
+      "category": "Navigation",
+      "priority": "high",
+      "tests": [
+        {
+          "id": "NAV001",
+          "name": "Logo Navigation",
+          "description": "Verificar se o logo redireciona para o topo da página",
+          "steps": [
+            "Acessar a página inicial",
+            "Clicar no logo",
+            "Verificar se a página rola para o topo"
+          ],
+          "expected_result": "Página deve rolar suavemente para o topo"
+        },
+        {
+          "id": "NAV002", 
+          "name": "Menu Responsivo",
+          "description": "Testar funcionamento do menu em diferentes dispositivos",
+          "steps": [
+            "Redimensionar janela para mobile",
+            "Verificar se menu hambúrguer aparece",
+            "Clicar no menu hambúrguer",
+            "Verificar se menu abre corretamente"
+          ],
+          "expected_result": "Menu deve funcionar corretamente em mobile e desktop"
+        },
+        {
+          "id": "NAV003",
+          "name": "Smooth Scroll",
+          "description": "Verificar navegação suave entre seções",
+          "steps": [
+            "Clicar em cada item do menu",
+            "Verificar se rola suavemente para a seção correspondente"
+          ],
+          "expected_result": "Scroll suave para cada seção"
+        }
+      ]
+    },
+    {
+      "category": "Hero Section",
+      "priority": "high", 
+      "tests": [
+        {
+          "id": "HERO001",
+          "name": "Hero Animation",
+          "description": "Verificar animações da seção hero",
+          "steps": [
+            "Carregar a página",
+            "Observar animações de entrada",
+            "Verificar se texto aparece suavemente"
+          ],
+          "expected_result": "Animações devem executar sem travamentos"
+        },
+        {
+          "id": "HERO002",
+          "name": "CTA Button",
+          "description": "Testar botão de call-to-action",
+          "steps": [
+            "Localizar botão 'Entre em Contato'",
+            "Clicar no botão",
+            "Verificar redirecionamento"
+          ],
+          "expected_result": "Deve redirecionar para seção de contato"
+        }
+      ]
+    },
+    {
+      "category": "About Section",
+      "priority": "medium",
+      "tests": [
+        {
+          "id": "ABOUT001",
+          "name": "Profile Information",
+          "description": "Verificar exibição das informações do perfil",
+          "steps": [
+            "Navegar para seção About",
+            "Verificar se foto de perfil carrega",
+            "Verificar se texto biográfico está visível"
+          ],
+          "expected_result": "Todas as informações devem estar visíveis e bem formatadas"
+        },
+        {
+          "id": "ABOUT002",
+          "name": "Skills Progress Bars",
+          "description": "Testar animação das barras de progresso",
+          "steps": [
+            "Rolar até a seção de habilidades",
+            "Observar animação das barras de progresso",
+            "Verificar se percentuais estão corretos"
+          ],
+          "expected_result": "Barras devem animar suavemente até os valores corretos"
+        }
+      ]
+    },
+    {
+      "category": "Projects Section",
+      "priority": "high",
+      "tests": [
+        {
+          "id": "PROJ001",
+          "name": "Project Filters",
+          "description": "Testar filtros de categoria de projetos",
+          "steps": [
+            "Navegar para seção de projetos",
+            "Clicar em diferentes filtros de categoria",
+            "Verificar se projetos são filtrados corretamente"
+          ],
+          "expected_result": "Projetos devem ser filtrados conforme categoria selecionada"
+        },
+        {
+          "id": "PROJ002",
+          "name": "Project Cards",
+          "description": "Verificar interação com cards de projetos",
+          "steps": [
+            "Passar mouse sobre cards de projetos",
+            "Verificar efeitos hover",
+            "Clicar em links de demo e GitHub"
+          ],
+          "expected_result": "Cards devem responder ao hover e links devem funcionar"
+        }
+      ]
+    },
+    {
+      "category": "Services Section", 
+      "priority": "medium",
+      "tests": [
+        {
+          "id": "SERV001",
+          "name": "Service Cards Display",
+          "description": "Verificar exibição dos cards de serviços",
+          "steps": [
+            "Navegar para seção de serviços",
+            "Verificar se todos os cards estão visíveis",
+            "Verificar se ícones e textos carregam corretamente"
+          ],
+          "expected_result": "Todos os serviços devem estar bem apresentados"
+        }
+      ]
+    },
+    {
+      "category": "Contact Section",
+      "priority": "high",
+      "tests": [
+        {
+          "id": "CONT001",
+          "name": "Contact Form",
+          "description": "Testar funcionamento do formulário de contato",
+          "steps": [
+            "Navegar para seção de contato",
+            "Preencher todos os campos obrigatórios",
+            "Clicar em enviar",
+            "Verificar validação de campos"
+          ],
+          "expected_result": "Formulário deve validar campos e processar envio"
+        },
+        {
+          "id": "CONT002",
+          "name": "WhatsApp Button",
+          "description": "Testar botão flutuante do WhatsApp",
+          "steps": [
+            "Localizar botão flutuante do WhatsApp",
+            "Clicar no botão",
+            "Verificar se abre WhatsApp Web/App"
+          ],
+          "expected_result": "Deve abrir WhatsApp com mensagem pré-definida"
+        }
+      ]
+    },
+    {
+      "category": "FAQ Section",
+      "priority": "low",
+      "tests": [
+        {
+          "id": "FAQ001",
+          "name": "FAQ Accordion",
+          "description": "Testar funcionamento do accordion de FAQ",
+          "steps": [
+            "Navegar para seção FAQ",
+            "Clicar em diferentes perguntas",
+            "Verificar se respostas expandem/contraem"
+          ],
+          "expected_result": "Accordion deve funcionar suavemente"
+        }
+      ]
+    },
+    {
+      "category": "Responsiveness",
+      "priority": "high",
+      "tests": [
+        {
+          "id": "RESP001",
+          "name": "Mobile Layout",
+          "description": "Verificar layout em dispositivos móveis",
+          "steps": [
+            "Redimensionar para 375px de largura",
+            "Navegar por todas as seções",
+            "Verificar se layout se adapta corretamente"
+          ],
+          "expected_result": "Layout deve ser totalmente responsivo"
+        },
+        {
+          "id": "RESP002",
+          "name": "Tablet Layout", 
+          "description": "Verificar layout em tablets",
+          "steps": [
+            "Redimensionar para 768px de largura",
+            "Verificar adaptação do layout",
+            "Testar navegação touch"
+          ],
+          "expected_result": "Layout deve funcionar bem em tablets"
+        }
+      ]
+    },
+    {
+      "category": "Performance",
+      "priority": "medium",
+      "tests": [
+        {
+          "id": "PERF001",
+          "name": "Page Load Speed",
+          "description": "Medir velocidade de carregamento da página",
+          "steps": [
+            "Abrir DevTools",
+            "Recarregar página",
+            "Medir tempo de carregamento",
+            "Verificar Core Web Vitals"
+          ],
+          "expected_result": "Página deve carregar em menos de 3 segundos"
+        },
+        {
+          "id": "PERF002",
+          "name": "Image Optimization",
+          "description": "Verificar otimização de imagens",
+          "steps": [
+            "Inspecionar imagens na página",
+            "Verificar formatos (WebP, AVIF)",
+            "Verificar lazy loading"
+          ],
+          "expected_result": "Imagens devem estar otimizadas e com lazy loading"
+        }
+      ]
+    },
+    {
+      "category": "Accessibility",
+      "priority": "medium", 
+      "tests": [
+        {
+          "id": "A11Y001",
+          "name": "Keyboard Navigation",
+          "description": "Testar navegação por teclado",
+          "steps": [
+            "Usar apenas teclado para navegar",
+            "Verificar se todos os elementos são acessíveis via Tab",
+            "Testar Enter/Space em botões"
+          ],
+          "expected_result": "Todos os elementos devem ser acessíveis via teclado"
+        },
+        {
+          "id": "A11Y002",
+          "name": "Screen Reader Support",
+          "description": "Verificar suporte a leitores de tela",
+          "steps": [
+            "Verificar alt text em imagens",
+            "Verificar aria-labels",
+            "Verificar estrutura semântica HTML"
+          ],
+          "expected_result": "Página deve ser acessível para leitores de tela"
+        }
+      ]
+    }
+  ]
+}

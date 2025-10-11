@@ -1,0 +1,229 @@
+{
+  "project_name": "Portfólio Bruno Guimarães",
+  "project_description": "Portfólio profissional moderno desenvolvido para apresentar o trabalho de Bruno Guimarães, desenvolvedor frontend com mais de 6 anos de experiência e especialista em marketing digital.",
+  "project_type": "frontend",
+  "version": "1.0.0",
+  "tech_stack": {
+    "frontend": ["Next.js 15.5.4", "React 19.1.0", "TypeScript 5.0", "Tailwind CSS 4.0"],
+    "ui_libraries": ["Radix UI", "Shadcn UI", "Lucide React", "Framer Motion"],
+    "tools": ["ESLint", "Turbopack", "PostCSS"]
+  },
+  "target_audience": [
+    "Empresários e empreendedores",
+    "Agências de marketing digital", 
+    "Startups e PMEs",
+    "Profissionais que precisam de presença digital"
+  ],
+  "business_objectives": [
+    "Apresentar portfólio profissional",
+    "Gerar leads qualificados",
+    "Demonstrar expertise técnica",
+    "Facilitar contato com clientes potenciais"
+  ],
+  "functional_requirements": [
+    {
+      "id": "FR001",
+      "title": "Navegação Principal",
+      "description": "Sistema de navegação responsivo com scroll suave",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Menu deve funcionar em desktop e mobile",
+        "Links devem fazer scroll suave para seções",
+        "Logo deve retornar ao topo da página"
+      ]
+    },
+    {
+      "id": "FR002", 
+      "title": "Seção Hero",
+      "description": "Apresentação impactante com animações e call-to-action",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Animações devem executar suavemente",
+        "CTA deve redirecionar para contato",
+        "Texto deve ser legível e impactante"
+      ]
+    },
+    {
+      "id": "FR003",
+      "title": "Seção Sobre",
+      "description": "Perfil profissional com foto, biografia e habilidades",
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Foto de perfil deve carregar corretamente",
+        "Barras de progresso devem animar",
+        "Informações devem estar organizadas"
+      ]
+    },
+    {
+      "id": "FR004",
+      "title": "Portfólio de Projetos",
+      "description": "Showcase de projetos com filtros e detalhes",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Filtros devem funcionar corretamente",
+        "Cards devem ter hover effects",
+        "Links externos devem abrir em nova aba"
+      ]
+    },
+    {
+      "id": "FR005",
+      "title": "Seção de Serviços",
+      "description": "Apresentação dos serviços oferecidos",
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Cards de serviços devem estar bem organizados",
+        "Ícones devem carregar corretamente",
+        "Processo de trabalho deve estar claro"
+      ]
+    },
+    {
+      "id": "FR006",
+      "title": "Formulário de Contato",
+      "description": "Sistema de contato com validação",
+      "priority": "high",
+      "acceptance_criteria": [
+        "Campos obrigatórios devem ser validados",
+        "Mensagens de erro devem ser claras",
+        "Envio deve funcionar corretamente"
+      ]
+    },
+    {
+      "id": "FR007",
+      "title": "FAQ Interativo",
+      "description": "Seção de perguntas frequentes com accordion",
+      "priority": "low",
+      "acceptance_criteria": [
+        "Accordion deve expandir/contrair suavemente",
+        "Perguntas devem estar bem organizadas",
+        "Respostas devem ser informativas"
+      ]
+    },
+    {
+      "id": "FR008",
+      "title": "WhatsApp Integration",
+      "description": "Botão flutuante para contato direto via WhatsApp",
+      "priority": "medium",
+      "acceptance_criteria": [
+        "Botão deve estar sempre visível",
+        "Deve abrir WhatsApp com mensagem pré-definida",
+        "Deve funcionar em mobile e desktop"
+      ]
+    }
+  ],
+  "non_functional_requirements": [
+    {
+      "id": "NFR001",
+      "title": "Performance",
+      "description": "Página deve carregar rapidamente",
+      "criteria": [
+        "Tempo de carregamento < 3 segundos",
+        "Core Web Vitals otimizados",
+        "Lighthouse score > 90"
+      ]
+    },
+    {
+      "id": "NFR002",
+      "title": "Responsividade",
+      "description": "Layout deve funcionar em todos os dispositivos",
+      "criteria": [
+        "Mobile-first design",
+        "Breakpoints: 375px, 768px, 1024px, 1440px",
+        "Touch-friendly em dispositivos móveis"
+      ]
+    },
+    {
+      "id": "NFR003",
+      "title": "Acessibilidade",
+      "description": "Site deve ser acessível para todos os usuários",
+      "criteria": [
+        "Navegação por teclado",
+        "Suporte a leitores de tela",
+        "Contraste adequado",
+        "Alt text em imagens"
+      ]
+    },
+    {
+      "id": "NFR004",
+      "title": "SEO",
+      "description": "Otimização para mecanismos de busca",
+      "criteria": [
+        "Meta tags otimizadas",
+        "Dados estruturados",
+        "Sitemap automático",
+        "URLs semânticas"
+      ]
+    },
+    {
+      "id": "NFR005",
+      "title": "Compatibilidade",
+      "description": "Suporte a navegadores modernos",
+      "criteria": [
+        "Chrome 90+",
+        "Firefox 88+", 
+        "Safari 14+",
+        "Edge 90+"
+      ]
+    }
+  ],
+  "user_stories": [
+    {
+      "id": "US001",
+      "as": "Visitante",
+      "want": "Navegar facilmente pelo portfólio",
+      "so_that": "Posso conhecer o trabalho do desenvolvedor"
+    },
+    {
+      "id": "US002",
+      "as": "Cliente potencial",
+      "want": "Ver projetos anteriores com detalhes",
+      "so_that": "Posso avaliar a qualidade do trabalho"
+    },
+    {
+      "id": "US003",
+      "as": "Empresário",
+      "want": "Entrar em contato facilmente",
+      "so_that": "Posso solicitar um orçamento"
+    },
+    {
+      "id": "US004",
+      "as": "Usuário mobile",
+      "want": "Acessar o site no meu celular",
+      "so_that": "Posso navegar confortavelmente"
+    }
+  ],
+  "success_metrics": [
+    {
+      "metric": "Tempo de permanência",
+      "target": "> 2 minutos",
+      "description": "Usuários devem permanecer tempo suficiente para conhecer o trabalho"
+    },
+    {
+      "metric": "Taxa de conversão",
+      "target": "> 5%",
+      "description": "Percentual de visitantes que entram em contato"
+    },
+    {
+      "metric": "Performance Score",
+      "target": "> 90",
+      "description": "Score do Lighthouse para performance"
+    },
+    {
+      "metric": "Acessibilidade Score",
+      "target": "> 95",
+      "description": "Score do Lighthouse para acessibilidade"
+    }
+  ],
+  "constraints": [
+    "Deve ser desenvolvido com Next.js e React",
+    "Deve usar Tailwind CSS para estilização",
+    "Deve ser responsivo e acessível",
+    "Deve ter performance otimizada",
+    "Deve funcionar sem JavaScript (progressive enhancement)"
+  ],
+  "assumptions": [
+    "Usuários têm conexão de internet estável",
+    "Navegadores suportam ES6+",
+    "Dispositivos têm resolução mínima de 320px",
+    "Usuários podem ter deficiências visuais ou motoras"
+  ]
+}
