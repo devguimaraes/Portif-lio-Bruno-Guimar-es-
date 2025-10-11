@@ -49,42 +49,6 @@ function AnimatedText({ text, className }: { text: string; className?: string })
   )
 }
 
-// Componente de métricas
-function MetricsDisplay() {
-  const uniqueId = React.useId()
-  const metrics = [
-    { label: 'Anos de Experiência', value: '5+' },
-    { label: 'Projetos Concluídos', value: '50+' },
-    { label: 'Tecnologias', value: '20+' },
-    { label: 'Clientes Satisfeitos', value: '30+' }
-  ]
-
-  return (
-    <motion.div
-      className="flex flex-wrap gap-8 justify-center"
-      variants={staggerContainer}
-      initial="initial"
-      animate="animate"
-    >
-      {metrics.map((metric, index) => (
-        <motion.div
-          key={`${uniqueId}-metric-${index}`}
-          className="text-center"
-          variants={fadeInUp}
-          transition={{ delay: 0.8 + index * 0.1 }}
-        >
-          <div className="text-2xl md:text-3xl font-bold text-foreground">
-            {metric.value}
-          </div>
-          <div className="text-sm text-muted-foreground">
-            {metric.label}
-          </div>
-        </motion.div>
-      ))}
-    </motion.div>
-  )
-}
-
 export function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -216,17 +180,9 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Métricas posicionadas acima da seta */}
-      <motion.div
-        className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-md"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.0, duration: 0.6 }}
-      >
-        <MetricsDisplay />
-      </motion.div>
 
-      {/* Indicador de scroll */}
+
+      {/* Indicador de scroll com espaçamento adequado */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 20 }}
