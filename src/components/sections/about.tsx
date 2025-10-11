@@ -23,8 +23,9 @@ const technicalSkills = [
   { name: 'TypeScript', level: 90, icon: Code2, color: 'bg-blue-600' },
   { name: 'Node.js', level: 85, icon: Server, color: 'bg-green-500' },
   { name: 'WordPress', level: 92, icon: Globe, color: 'bg-blue-700' },
-  { name: 'PHP', level: 88, icon: Code2, color: 'bg-purple-500' },
-  { name: 'MySQL/PostgreSQL', level: 80, icon: Database, color: 'bg-orange-500' },
+  { name: 'PHP', level: 75, icon: Code2, color: 'bg-purple-500' },
+  { name: 'Supabase', level: 85, icon: Database, color: 'bg-green-600' },
+  { name: 'SEO', level: 99, icon: Globe, color: 'bg-yellow-500' },
   { name: 'Tailwind CSS', level: 95, icon: Palette, color: 'bg-cyan-500' },
   { name: 'React Native', level: 75, icon: Smartphone, color: 'bg-blue-400' }
 ]
@@ -111,6 +112,23 @@ export function About() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
+                {/* Foto de perfil circular */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="flex justify-center mb-6"
+                >
+                  <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+                    <img
+                      src="/profile.png"
+                      alt="Bruno Guimarães - Desenvolvedor Full Stack"
+                      className="object-cover"
+                    />
+                  </div>
+                </motion.div>
+                
                 <p className="text-muted-foreground">
                   Sou um desenvolvedor Full Stack com sólida experiência em tecnologias 
                   front-end e back-end. Minha paixão é transformar ideias em soluções 
@@ -204,7 +222,7 @@ export function About() {
           className="mb-16"
         >
           <h3 className="text-2xl font-bold mb-8 text-center">Experiência Profissional</h3>
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
@@ -213,30 +231,32 @@ export function About() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card>
+                <Card className="h-full">
                   <CardHeader>
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                    <div className="flex flex-col gap-2">
                       <div>
-                        <CardTitle>{exp.title}</CardTitle>
-                        <CardDescription className="flex items-center gap-4 mt-1">
+                        <CardTitle className="text-lg">{exp.title}</CardTitle>
+                        <CardDescription className="flex flex-col gap-1 mt-1">
                           <span className="font-medium">{exp.company}</span>
-                          <span className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            {exp.period}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <MapPin className="h-3 w-3" />
-                            {exp.location}
-                          </span>
+                          <div className="flex items-center gap-3 text-xs">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="h-3 w-3" />
+                              {exp.period}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <MapPin className="h-3 w-3" />
+                              {exp.location}
+                            </span>
+                          </div>
                         </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4">{exp.description}</p>
+                    <p className="text-muted-foreground mb-4 text-sm">{exp.description}</p>
                     <div>
-                      <h5 className="font-semibold mb-2">Principais conquistas:</h5>
-                      <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
+                      <h5 className="font-semibold mb-2 text-sm">Principais conquistas:</h5>
+                      <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground">
                         {exp.achievements.map((achievement, i) => (
                           <li key={i}>{achievement}</li>
                         ))}
