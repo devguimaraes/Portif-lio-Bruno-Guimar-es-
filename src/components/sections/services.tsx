@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -105,6 +106,9 @@ const workProcess = [
 ]
 
 export function Services() {
+  // Gera ID único para este componente
+  const componentId = React.useId()
+  
   return (
     <section id="services" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -146,7 +150,7 @@ export function Services() {
                     <h5 className="font-semibold mb-2 text-sm">Inclui:</h5>
                     <ul className="space-y-1">
                       {service.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <li key={`${componentId}-feature-${service.id}-${i}`} className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Check className="h-3 w-3 text-green-500" />
                           {feature}
                         </li>

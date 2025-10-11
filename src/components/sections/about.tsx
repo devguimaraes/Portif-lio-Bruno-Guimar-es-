@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -77,6 +78,9 @@ const education = [
 ]
 
 export function About() {
+  // Gera ID único para este componente
+  const componentId = React.useId()
+  
   return (
     <section id="about" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -258,7 +262,7 @@ export function About() {
                       <h5 className="font-semibold mb-2 text-sm">Principais conquistas:</h5>
                       <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground">
                         {exp.achievements.map((achievement, i) => (
-                          <li key={i}>{achievement}</li>
+                          <li key={`${componentId}-achievement-${exp.title}-${i}`}>{achievement}</li>
                         ))}
                       </ul>
                     </div>

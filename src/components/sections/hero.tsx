@@ -1,9 +1,13 @@
 'use client'
 
+import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowDown, Download, Mail } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { AsciiAnimation, AsciiCodeBlock, AsciiParticles } from '@/components/ui/ascii-animation'
+import { MatrixRain, MatrixGlitch, MatrixPulse } from '@/components/ui/matrix-animations'
+import { TechIconsRain } from '@/components/ui/tech-icons-rain'
 import { PERSONAL_INFO } from '@/constants'
 
 // Animações para os elementos
@@ -23,11 +27,13 @@ const staggerContainer = {
 
 // Componente de texto animado
 function AnimatedText({ text, className }: { text: string; className?: string }) {
+  const textId = React.useId() // Gera ID único para cada instância do componente
+  
   return (
     <motion.span className={className}>
       {text.split('').map((char, index) => (
         <motion.span
-          key={index}
+          key={`${textId}-char-${index}`}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -45,10 +51,12 @@ function AnimatedText({ text, className }: { text: string; className?: string })
 
 // Componente de métricas
 function MetricsDisplay() {
+  const uniqueId = React.useId()
   const metrics = [
-    { value: '50+', label: 'Projetos' },
-    { value: '3+', label: 'Anos' },
-    { value: '100%', label: 'Satisfação' }
+    { label: 'Anos de Experiência', value: '5+' },
+    { label: 'Projetos Concluídos', value: '50+' },
+    { label: 'Tecnologias', value: '20+' },
+    { label: 'Clientes Satisfeitos', value: '30+' }
   ]
 
   return (
@@ -60,7 +68,7 @@ function MetricsDisplay() {
     >
       {metrics.map((metric, index) => (
         <motion.div
-          key={metric.label}
+          key={`${uniqueId}-metric-${index}`}
           className="text-center"
           variants={fadeInUp}
           transition={{ delay: 0.8 + index * 0.1 }}
@@ -82,6 +90,20 @@ export function Hero() {
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background com gradiente sutil */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+      
+      {/* Animações ASCII de Background */}
+      <AsciiAnimation density={12} />
+      <AsciiCodeBlock position="top-right" />
+      <AsciiCodeBlock position="bottom-left" />
+      <AsciiParticles />
+      
+      {/* Animações Matrix de Background */}
+      <MatrixRain density={20} />
+      <MatrixGlitch />
+      <MatrixPulse />
+      
+      {/* Chuva sutil de ícones de tecnologias - TEMPORARIAMENTE REMOVIDO */}
+      {/* <TechIconsRain density={6} /> */}
       
       {/* Elementos decorativos */}
       <motion.div

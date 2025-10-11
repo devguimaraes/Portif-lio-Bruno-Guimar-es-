@@ -1,21 +1,18 @@
 'use client'
 
+import React from 'react'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { 
   ExternalLink, 
   Github, 
   Globe, 
   Smartphone, 
-  ShoppingCart, 
   Building2,
-  Palette,
   Code2,
-  Database,
   Zap
 } from 'lucide-react'
 
@@ -148,6 +145,9 @@ const statusConfig = {
 export function Projects() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  
+  // Gera ID único para este componente
+  const componentId = React.useId()
 
   // Filtrar projetos por categoria
   const filteredProjects = selectedCategory === 'all' 
@@ -295,7 +295,7 @@ export function Projects() {
                     <h5 className="text-sm font-semibold mb-2">Principais features:</h5>
                     <ul className="text-xs text-muted-foreground space-y-1">
                       {project.features.slice(0, 3).map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2">
+                        <li key={`${componentId}-feature-${project.id}-${i}`} className="flex items-center gap-2">
                           <Zap className="h-3 w-3 text-green-500" />
                           {feature}
                         </li>
