@@ -2,7 +2,7 @@
 
 export const PERSONAL_INFO = {
   name: 'Bruno Guimarães',
-  title: 'Desenvolvedor Frontend & Especialista em Marketing Digital',
+  title: 'Desenvolvedor Frontend & Especialista em SEO Local',
   description: 'Desenvolvo sites e aplicações web que não apenas funcionam perfeitamente, mas que aparecem no Google e geram clientes reais para seu negócio',
   contact: {
     email: 'brunogdepaula@hotmail.com',
@@ -10,11 +10,11 @@ export const PERSONAL_INFO = {
     location: 'Rio de Janeiro, RJ'
   },
   social: {
-    github: 'https://github.com/brunoguimaraes',
+    github: 'https://github.com/devguimaraes',
     linkedin: 'https://linkedin.com/in/bcguimaraes',
     instagram: 'https://instagram.com/brunoguimraes'
   },
-  experience: '6+ anos em Desenvolvimento Web | 3+ anos em Marketing Digital'
+  experience: '6+ anos em Desenvolvimento Web | 3+ anos em SEO Local'
 } as const
 
 export const UVP = 'Desenvolvo sites e aplicações web que não apenas funcionam perfeitamente, mas que aparecem no Google e geram clientes reais para seu negócio'
