@@ -53,7 +53,7 @@ function MetricsDisplay() {
 
   return (
     <motion.div
-      className="flex flex-wrap gap-8 justify-center md:justify-start"
+      className="flex flex-wrap gap-8 justify-center"
       variants={staggerContainer}
       initial="initial"
       animate="animate"
@@ -138,7 +138,7 @@ export function Hero() {
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
               <AnimatedText text="Olá, eu sou" className="block" />
               <AnimatedText 
-                text="Bruno" 
+                text="Bruno Guimarães" 
                 className="block text-accent" 
               />
             </h1>
@@ -164,7 +164,7 @@ export function Hero() {
 
           {/* Botões de ação */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
             {...fadeInUp}
             transition={{ delay: 0.8 }}
           >
@@ -191,11 +191,18 @@ export function Hero() {
               </a>
             </Button>
           </motion.div>
-
-          {/* Métricas */}
-          <MetricsDisplay />
         </div>
       </div>
+
+      {/* Métricas posicionadas acima da seta */}
+      <motion.div
+        className="absolute bottom-20 left-1/2 transform -translate-x-1/2 w-full max-w-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0, duration: 0.6 }}
+      >
+        <MetricsDisplay />
+      </motion.div>
 
       {/* Indicador de scroll */}
       <motion.div

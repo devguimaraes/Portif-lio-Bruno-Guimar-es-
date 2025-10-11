@@ -9,14 +9,9 @@ import {
   Globe, 
   Smartphone, 
   Database, 
-  Zap, 
-  Shield, 
   Headphones, 
   Rocket,
   Check,
-  Star,
-  ArrowRight,
-  Clock,
   Users,
   Settings
 } from 'lucide-react'
@@ -35,8 +30,7 @@ const services = [
       'Integração com APIs',
       'Painel administrativo'
     ],
-    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
-    startingPrice: 'R$ 2.500'
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS']
   },
   {
     id: 2,
@@ -50,8 +44,7 @@ const services = [
       'Publicação nas lojas',
       'Suporte multiplataforma'
     ],
-    technologies: ['React Native', 'Expo', 'Firebase', 'TypeScript'],
-    startingPrice: 'R$ 4.000'
+    technologies: ['React Native', 'Expo', 'Firebase', 'TypeScript']
   },
   {
     id: 3,
@@ -65,8 +58,7 @@ const services = [
       'Integração com sistemas existentes',
       'Backup automático'
     ],
-    technologies: ['Node.js', 'PostgreSQL', 'Redis', 'Docker'],
-    startingPrice: 'R$ 8.000'
+    technologies: ['Node.js', 'PostgreSQL', 'Redis', 'Docker']
   },
   {
     id: 4,
@@ -80,74 +72,7 @@ const services = [
       'SEO otimizado',
       'Treinamento incluído'
     ],
-    technologies: ['WordPress', 'PHP', 'MySQL', 'JavaScript'],
-    startingPrice: 'R$ 1.800'
-  }
-]
-
-// Pacotes de preços
-const pricingPlans = [
-  {
-    id: 1,
-    name: 'Básico',
-    description: 'Ideal para pequenos negócios e projetos simples',
-    price: 'R$ 1.500',
-    period: 'projeto',
-    popular: false,
-    features: [
-      'Site responsivo até 5 páginas',
-      'Design moderno e profissional',
-      'Formulário de contato',
-      'SEO básico',
-      'Hospedagem por 1 ano',
-      '2 revisões incluídas',
-      'Suporte por 30 dias'
-    ],
-    deliveryTime: '7-10 dias',
-    buttonText: 'Começar Projeto'
-  },
-  {
-    id: 2,
-    name: 'Profissional',
-    description: 'Para empresas que precisam de mais funcionalidades',
-    price: 'R$ 3.500',
-    period: 'projeto',
-    popular: true,
-    features: [
-      'Site responsivo até 10 páginas',
-      'Design personalizado',
-      'Blog integrado',
-      'SEO avançado',
-      'Integração com redes sociais',
-      'Painel administrativo',
-      'Hospedagem por 1 ano',
-      '5 revisões incluídas',
-      'Suporte por 60 dias'
-    ],
-    deliveryTime: '15-20 dias',
-    buttonText: 'Escolher Plano'
-  },
-  {
-    id: 3,
-    name: 'Enterprise',
-    description: 'Soluções completas para grandes projetos',
-    price: 'R$ 8.000',
-    period: 'projeto',
-    popular: false,
-    features: [
-      'Aplicação web completa',
-      'Design system personalizado',
-      'Múltiplas integrações',
-      'Dashboard avançado',
-      'Sistema de usuários',
-      'API personalizada',
-      'Hospedagem premium',
-      'Revisões ilimitadas',
-      'Suporte por 90 dias',
-      'Treinamento da equipe'
-    ],
-    deliveryTime: '30-45 dias',
-    buttonText: 'Solicitar Orçamento'
+    technologies: ['WordPress', 'PHP', 'MySQL', 'JavaScript']
   }
 ]
 
@@ -239,91 +164,11 @@ export function Services() {
                       ))}
                     </div>
                   </div>
-
-                  <div className="pt-2 border-t">
-                    <p className="text-sm text-muted-foreground">A partir de</p>
-                    <p className="text-lg font-bold text-primary">{service.startingPrice}</p>
-                  </div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
-
-        {/* Pacotes de preços */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Pacotes Populares</h3>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              Escolha o pacote que melhor se adequa ao seu projeto e orçamento.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {pricingPlans.map((plan, index) => (
-              <motion.div
-                key={plan.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-primary text-primary-foreground px-3 py-1">
-                      <Star className="h-3 w-3 mr-1" />
-                      Mais Popular
-                    </Badge>
-                  </div>
-                )}
-                
-                <Card className={`h-full ${plan.popular ? 'border-primary shadow-lg scale-105' : ''}`}>
-                  <CardHeader className="text-center">
-                    <CardTitle className="text-xl">{plan.name}</CardTitle>
-                    <CardDescription>{plan.description}</CardDescription>
-                    <div className="mt-4">
-                      <span className="text-3xl font-bold">{plan.price}</span>
-                      <span className="text-muted-foreground">/{plan.period}</span>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Clock className="h-4 w-4" />
-                      <span>Entrega em {plan.deliveryTime}</span>
-                    </div>
-                    
-                    <ul className="space-y-2">
-                      {plan.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 text-sm">
-                          <Check className="h-4 w-4 text-green-500" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Button 
-                      className="w-full mt-6" 
-                      variant={plan.popular ? 'default' : 'outline'}
-                      asChild
-                    >
-                      <a href="#contact">
-                        {plan.buttonText}
-                        <ArrowRight className="h-4 w-4 ml-2" />
-                      </a>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Processo de trabalho */}
         <motion.div

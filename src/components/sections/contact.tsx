@@ -70,25 +70,7 @@ const socialLinks = [
   }
 ]
 
-// FAQ comum
-const faq = [
-  {
-    question: 'Qual o prazo médio de entrega?',
-    answer: 'Varia de 7 a 45 dias dependendo da complexidade do projeto. Sites simples ficam prontos em 1-2 semanas.'
-  },
-  {
-    question: 'Vocês fazem manutenção?',
-    answer: 'Sim! Oferecemos planos de manutenção mensal com atualizações, backups e suporte técnico.'
-  },
-  {
-    question: 'Como funciona o pagamento?',
-    answer: 'Trabalhamos com 50% no início e 50% na entrega. Para projetos maiores, parcelamos em mais etapas.'
-  },
-  {
-    question: 'Fazem projetos internacionais?',
-    answer: 'Sim, atendemos clientes do mundo todo. Temos experiência com projetos em inglês e espanhol.'
-  }
-]
+
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -149,14 +131,14 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        {/* Grid responsivo - apenas formulário */}
+        <div className="max-w-2xl mx-auto">
           {/* Formulário de contato */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="lg:col-span-2"
           >
             <Card>
               <CardHeader>
@@ -296,124 +278,6 @@ export function Contact() {
             </Card>
           </motion.div>
 
-          {/* Informações de contato e FAQ */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            {/* Contato direto */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Contato Direto</CardTitle>
-                <CardDescription>
-                  Prefere falar diretamente? Use um dos canais abaixo
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {contactInfo.map((contact, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <div className="p-2 bg-primary/10 rounded-lg">
-                      <contact.icon className="h-4 w-4 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium text-sm">{contact.label}</span>
-                        {contact.href !== '#' && (
-                          <a 
-                            href={contact.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-primary hover:text-primary/80"
-                          >
-                            <ExternalLink className="h-3 w-3" />
-                          </a>
-                        )}
-                      </div>
-                      <p className="text-sm font-medium">{contact.value}</p>
-                      <p className="text-xs text-muted-foreground">{contact.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Redes sociais */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Redes Sociais</CardTitle>
-                <CardDescription>
-                  Acompanhe meu trabalho e novidades
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors"
-                  >
-                    <social.icon className="h-5 w-5 text-primary" />
-                    <div>
-                      <p className="font-medium text-sm">{social.label}</p>
-                      <p className="text-xs text-muted-foreground">{social.username}</p>
-                    </div>
-                    <ExternalLink className="h-3 w-3 text-muted-foreground ml-auto" />
-                  </a>
-                ))}
-              </CardContent>
-            </Card>
-
-            {/* Disponibilidade */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" />
-                  Disponibilidade
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm">Status atual:</span>
-                  <Badge variant="secondary" className="bg-green-100 text-green-800">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2" />
-                    Disponível
-                  </Badge>
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  <p>• Novos projetos: Aceitando</p>
-                  <p>• Tempo de resposta: 2-4 horas</p>
-                  <p>• Próxima vaga: Janeiro 2024</p>
-                </div>
-                <Button variant="outline" size="sm" className="w-full" asChild>
-                  <a href="https://calendly.com/brunoguimaraes" target="_blank" rel="noopener noreferrer">
-                    <Calendar className="h-4 w-4 mr-2" />
-                    Agendar Reunião
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* FAQ rápido */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Perguntas Frequentes</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {faq.map((item, index) => (
-                  <div key={index} className="space-y-2">
-                    <h4 className="font-medium text-sm">{item.question}</h4>
-                    <p className="text-xs text-muted-foreground">{item.answer}</p>
-                    {index < faq.length - 1 && <hr className="my-3" />}
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </div>
     </section>
