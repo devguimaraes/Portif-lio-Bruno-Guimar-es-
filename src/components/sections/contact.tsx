@@ -28,15 +28,15 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'bruno@exemplo.com',
-    href: 'mailto:bruno@exemplo.com',
+    value: 'devgmrs@gmail.com',
+    href: 'mailto:devgmrs@gmail.com',
     description: 'Respondo em até 2 horas'
   },
   {
     icon: Phone,
     label: 'WhatsApp',
-    value: '+55 (21) 98767-0200',
-    href: 'https://wa.me/5521987670200',
+    value: '+55 (21) 96971-5247',
+    href: 'https://wa.me/5521969715247',
     description: 'Disponível das 9h às 18h'
   },
   {
@@ -53,20 +53,20 @@ const socialLinks = [
   {
     icon: Github,
     label: 'GitHub',
-    href: 'https://github.com/brunoguimaraes',
-    username: '@brunoguimaraes'
+    href: 'https://github.com/devguimaraes',
+    username: '@devguimaraes'
   },
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/brunoguimaraes',
-    username: '/in/brunoguimaraes'
+    href: 'https://www.linkedin.com/in/bcguimaraes/',
+    username: '/in/bcguimaraes'
   },
   {
     icon: Instagram,
     label: 'Instagram',
-    href: 'https://instagram.com/brunoguimaraes.dev',
-    username: '@brunoguimaraes.dev'
+    href: 'https://www.instagram.com/brunoguimraes/',
+    username: '@brunoguimraes'
   }
 ]
 

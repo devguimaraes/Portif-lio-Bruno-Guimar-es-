@@ -28,7 +28,7 @@ export function Footer() {
               <div className="flex space-x-4">
                 <Button variant="outline" size="icon" asChild>
                   <a 
-                    href="https://github.com/brunoguimaraes" 
+                    href="https://github.com/devguimaraes" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     aria-label="GitHub"
@@ -38,7 +38,7 @@ export function Footer() {
                 </Button>
                 <Button variant="outline" size="icon" asChild>
                   <a 
-                    href="https://linkedin.com/in/bcguimaraes" 
+                    href="https://www.linkedin.com/in/bcguimaraes/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
@@ -48,7 +48,7 @@ export function Footer() {
                 </Button>
                 <Button variant="outline" size="icon" asChild>
                   <a 
-                    href="mailto:brunogdepaula@hotmail.com"
+                    href="mailto:devgmrs@gmail.com"
                     aria-label="Email"
                   >
                     <Mail className="h-4 w-4" />
@@ -94,11 +94,11 @@ export function Footer() {
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4" />
-                  <span>(21) 98767-0200</span>
+                  <span>(21) 96971-5247</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4" />
-                  <span>brunogdepaula@hotmail.com</span>
+                  <span>devgmrs@gmail.com</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <MapPin className="h-4 w-4" />
