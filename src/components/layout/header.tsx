@@ -9,8 +9,12 @@ import { Menu, X, Moon, Sun, Link } from 'lucide-react'
 // Hook para controle do tema
 function useTheme() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    // Marca como montado para evitar hidratação
+    setMounted(true)
+    
     // Verifica preferência salva ou do sistema
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
@@ -27,7 +31,7 @@ function useTheme() {
     document.documentElement.classList.toggle('dark', newTheme === 'dark')
   }
 
-  return { theme, toggleTheme }
+  return { theme, toggleTheme, mounted }
 }
 
 // Componente de navegação desktop
@@ -85,7 +89,7 @@ function MobileNavigation() {
 // Componente principal do Header
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const { theme, toggleTheme } = useTheme()
+  const { theme, toggleTheme, mounted } = useTheme()
 
   // Detecta scroll para adicionar backdrop blur
   useEffect(() => {
@@ -133,17 +137,21 @@ export function Header() {
               onClick={toggleTheme}
               className="w-9 h-9 p-0"
             >
-              <motion.div
-                initial={false}
-                animate={{ rotate: theme === 'dark' ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {theme === 'light' ? (
-                  <Moon className="h-4 w-4" />
-                ) : (
-                  <Sun className="h-4 w-4" />
-                )}
-              </motion.div>
+              {mounted ? (
+                <motion.div
+                  initial={false}
+                  animate={{ rotate: theme === 'dark' ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {theme === 'light' ? (
+                    <Moon className="h-4 w-4" />
+                  ) : (
+                    <Sun className="h-4 w-4" />
+                  )}
+                </motion.div>
+              ) : (
+                <div className="h-4 w-4" />
+              )}
               <span className="sr-only">Alternar tema</span>
             </Button>
 
