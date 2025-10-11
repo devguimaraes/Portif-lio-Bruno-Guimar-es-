@@ -5,14 +5,14 @@ export const PERSONAL_INFO = {
   title: 'Desenvolvedor Frontend & Especialista em SEO Local',
   description: 'Desenvolvo sites e aplicações web que não apenas funcionam perfeitamente, mas que aparecem no Google e geram clientes reais para seu negócio',
   contact: {
-    email: 'brunogdepaula@hotmail.com',
-    phone: '(21) 98767-0200',
+    email: 'devgmrs@gmail.com',
+    phone: '(21) 96971-5247',
     location: 'Rio de Janeiro, RJ'
   },
   social: {
     github: 'https://github.com/devguimaraes',
-    linkedin: 'https://linkedin.com/in/bcguimaraes',
-    instagram: 'https://instagram.com/brunoguimraes'
+    linkedin: 'https://www.linkedin.com/in/bcguimaraes/',
+    instagram: 'https://www.instagram.com/brunoguimraes/'
   },
   experience: '6+ anos em Desenvolvimento Web | 3+ anos em SEO Local'
 } as const

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { Header } from './header'
 import { Footer } from './footer'
+import { WhatsAppButton } from '@/components/ui/whatsapp-button'
 
 interface MainLayoutProps {
   children: ReactNode
@@ -20,6 +21,9 @@ export function MainLayout({ children }: MainLayoutProps) {
       
       {/* Footer */}
       <Footer />
+      
+      {/* Botão flutuante do WhatsApp */}
+      <WhatsAppButton variant="fixed" />
     </div>
   )
 }
