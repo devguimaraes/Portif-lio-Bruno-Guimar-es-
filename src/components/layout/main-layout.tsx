@@ -22,7 +22,8 @@ export function MainLayout({ children }: MainLayoutProps) {
       {/* Footer */}
       <Footer />
       
-      {/* Botão flutuante do WhatsApp */}
+      {/* Botão flutuante do WhatsApp - Implementado para facilitar contato direto */}
+      {/* Resolve necessidade de comunicação rápida com clientes potenciais */}
       <WhatsAppButton variant="fixed" />
     </div>
   )

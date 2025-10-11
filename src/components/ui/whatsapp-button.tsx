@@ -1,3 +1,18 @@
+/**
+ * WhatsApp Button Component
+ * 
+ * Implementa funcionalidade de contato via WhatsApp conforme solicitado.
+ * Resolve a necessidade de comunicação direta com clientes através do WhatsApp.
+ * 
+ * Features implementadas:
+ * - Botão flutuante fixo na tela
+ * - Mensagem pré-definida personalizada
+ * - Design responsivo e acessível
+ * - Animações suaves com Framer Motion
+ * - Integração com número de telefone atualizado
+ * 
+ * @created 2024 - Implementação do sistema de contato WhatsApp
+ */
 'use client'
 
 import { MessageCircle } from 'lucide-react'
