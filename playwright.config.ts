@@ -18,7 +18,8 @@ export default defineConfig({
   },
   
   // Configuração de execução
-  fullyParallel: true,
+  // No CI, evitar paralelismo amplo para reduzir flutuação e artefatos
+  fullyParallel: !process.env.CI,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
@@ -29,6 +30,8 @@ export default defineConfig({
     ['json', { outputFile: 'test-results/results.json' }],
     ['junit', { outputFile: 'test-results/junit.xml' }]
   ],
+  // Centraliza artefatos gerados pelos testes
+  outputDir: 'test-results/artifacts',
   
   // Configurações globais de uso
   use: {
@@ -38,7 +41,8 @@ export default defineConfig({
     // Configurações de trace para debug
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    // Desativa vídeo localmente; mantém em CI apenas em falha
+    video: process.env.CI ? 'retain-on-failure' : 'off',
     
     // Configurações de navegador
     actionTimeout: 10000,
@@ -75,7 +79,8 @@ export default defineConfig({
 
   // Servidor de desenvolvimento
   webServer: {
-    command: 'npm run dev',
+    // Em CI, usamos build+start; localmente, dev para rapidez
+    command: process.env.CI ? 'npm run start' : 'npm run dev',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000

@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "playwright test",
+    "test:local": "playwright test --project=chromium --workers=1 --reporter=line",
+    "test:ci": "CI=1 npm run build && CI=1 playwright test --reporter=line",
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
