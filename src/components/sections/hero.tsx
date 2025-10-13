@@ -1,37 +1,73 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { ArrowDown, Download, Mail } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { AsciiAnimation, AsciiCodeBlock, AsciiParticles } from '@/components/ui/ascii-animation'
-import { MatrixRain, MatrixGlitch, MatrixPulse } from '@/components/ui/matrix-animations'
-import { TechIconsRain } from '@/components/ui/tech-icons-rain'
-import { PERSONAL_INFO } from '@/constants'
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowDown, Download, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import dynamic from "next/dynamic";
+import { PERSONAL_INFO } from "@/constants";
+
+// Carregar animações apenas no cliente para evitar SSR/hidratação instável
+const AsciiAnimation = dynamic(
+  () => import("@/components/ui/ascii-animation").then((m) => m.AsciiAnimation),
+  { ssr: false }
+);
+const AsciiCodeBlock = dynamic(
+  () => import("@/components/ui/ascii-animation").then((m) => m.AsciiCodeBlock),
+  { ssr: false }
+);
+const AsciiParticles = dynamic(
+  () => import("@/components/ui/ascii-animation").then((m) => m.AsciiParticles),
+  { ssr: false }
+);
+
+const MatrixRain = dynamic(
+  () => import("@/components/ui/matrix-animations").then((m) => m.MatrixRain),
+  { ssr: false }
+);
+const MatrixGlitch = dynamic(
+  () => import("@/components/ui/matrix-animations").then((m) => m.MatrixGlitch),
+  { ssr: false }
+);
+const MatrixPulse = dynamic(
+  () => import("@/components/ui/matrix-animations").then((m) => m.MatrixPulse),
+  { ssr: false }
+);
+// Caso volte a usar, manter client-only
+// const TechIconsRain = dynamic(
+//   () => import("@/components/ui/tech-icons-rain").then((m) => m.TechIconsRain),
+//   { ssr: false }
+// );
 
 // Animações para os elementos
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: 'easeOut' }
-}
+  transition: { duration: 0.6, ease: "easeOut" },
+};
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 // Componente de texto animado
-function AnimatedText({ text, className }: { text: string; className?: string }) {
-  const textId = React.useId() // Gera ID único para cada instância do componente
-  
+function AnimatedText({
+  text,
+  className,
+}: {
+  text: string;
+  className?: string;
+}) {
+  const textId = React.useId(); // Gera ID único para cada instância do componente
+
   return (
     <motion.span className={className}>
-      {text.split('').map((char, index) => (
+      {text.split("").map((char, index) => (
         <motion.span
           key={`${textId}-char-${index}`}
           initial={{ opacity: 0, y: 50 }}
@@ -39,14 +75,14 @@ function AnimatedText({ text, className }: { text: string; className?: string })
           transition={{
             duration: 0.5,
             delay: index * 0.03,
-            ease: 'easeOut'
+            ease: "easeOut",
           }}
         >
-          {char === ' ' ? '\u00A0' : char}
+          {char === " " ? "\u00A0" : char}
         </motion.span>
       ))}
     </motion.span>
-  )
+  );
 }
 
 export function Hero() {
@@ -54,46 +90,46 @@ export function Hero() {
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background com gradiente sutil */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
-      
+
       {/* Animações ASCII de Background */}
       <AsciiAnimation density={12} />
       <AsciiCodeBlock position="top-right" />
       <AsciiCodeBlock position="bottom-left" />
       <AsciiParticles />
-      
+
       {/* Animações Matrix de Background */}
       <MatrixRain density={20} />
       <MatrixGlitch />
       <MatrixPulse />
-      
+
       {/* Chuva sutil de ícones de tecnologias - TEMPORARIAMENTE REMOVIDO */}
       {/* <TechIconsRain density={6} /> */}
-      
+
       {/* Elementos decorativos */}
       <motion.div
         className="absolute top-20 right-20 w-32 h-32 bg-accent/5 rounded-full blur-3xl"
         animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3]
+          opacity: [0.3, 0.5, 0.3],
         }}
         transition={{
           duration: 4,
           repeat: Infinity,
-          ease: 'easeInOut'
+          ease: "easeInOut",
         }}
       />
-      
+
       <motion.div
         className="absolute bottom-20 left-20 w-24 h-24 bg-primary/5 rounded-full blur-2xl"
         animate={{
           scale: [1.2, 1, 1.2],
-          opacity: [0.2, 0.4, 0.2]
+          opacity: [0.2, 0.4, 0.2],
         }}
         transition={{
           duration: 3,
           repeat: Infinity,
-          ease: 'easeInOut',
-          delay: 1
+          ease: "easeInOut",
+          delay: 1,
         }}
       />
 
@@ -106,8 +142,8 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <Badge 
-              variant="secondary" 
+            <Badge
+              variant="secondary"
               className="px-4 py-2 text-sm font-medium bg-accent/10 text-accent border-accent/20"
             >
               🟢 Disponível para novos projetos
@@ -123,9 +159,9 @@ export function Hero() {
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
               <AnimatedText text="Olá, eu sou" className="block" />
-              <AnimatedText 
-                text="Bruno Guimarães" 
-                className="block text-accent" 
+              <AnimatedText
+                text="Bruno Guimarães"
+                className="block text-accent"
               />
             </h1>
           </motion.div>
@@ -145,7 +181,9 @@ export function Hero() {
             {...fadeInUp}
             transition={{ delay: 0.7 }}
           >
-            Desenvolvo sites e aplicações web que não apenas funcionam perfeitamente, mas que aparecem no Google e geram clientes reais para seu negócio
+            Desenvolvo sites e aplicações web que não apenas funcionam
+            perfeitamente, mas que aparecem no Google e geram clientes reais
+            para seu negócio
           </motion.p>
 
           {/* Botões de ação */}
@@ -164,7 +202,7 @@ export function Hero() {
                 Vamos conversar
               </a>
             </Button>
-            
+
             <Button
               variant="outline"
               size="lg"
@@ -180,8 +218,6 @@ export function Hero() {
         </div>
       </div>
 
-
-
       {/* Indicador de scroll com espaçamento adequado */}
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
@@ -191,11 +227,11 @@ export function Hero() {
       >
         <motion.div
           animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <ArrowDown className="h-6 w-6 text-muted-foreground" />
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }

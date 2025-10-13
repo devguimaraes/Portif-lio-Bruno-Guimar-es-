@@ -1,117 +1,125 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
-import { Badge } from '@/components/ui/badge'
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Send, 
-  MessageCircle, 
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  MessageCircle,
   Calendar,
   Clock,
   CheckCircle,
   Github,
   Linkedin,
   Instagram,
-  ExternalLink
-} from 'lucide-react'
+  ExternalLink,
+} from "lucide-react";
 
 // Informações de contato
 const contactInfo = [
   {
     icon: Mail,
-    label: 'Email',
-    value: 'devgmrs@gmail.com',
-    href: 'mailto:devgmrs@gmail.com',
-    description: 'Respondo em até 2 horas'
+    label: "Email",
+    value: "devgmrs@gmail.com",
+    href: "mailto:devgmrs@gmail.com",
+    description: "Respondo em até 2 horas",
   },
   {
     icon: Phone,
-    label: 'WhatsApp',
-    value: '+55 (21) 96971-5247',
-    href: 'https://wa.me/5521969715247',
-    description: 'Disponível das 9h às 18h'
+    label: "WhatsApp",
+    value: "+55 (21) 96971-5247",
+    href: "https://wa.me/5521969715247",
+    description: "Disponível das 9h às 18h",
   },
   {
     icon: MapPin,
-    label: 'Localização',
-    value: 'Rio de Janeiro, RJ',
-    href: '#',
-    description: 'Atendo presencial e remoto'
-  }
-]
+    label: "Localização",
+    value: "Rio de Janeiro, RJ",
+    href: "#",
+    description: "Atendo presencial e remoto",
+  },
+];
 
 // Redes sociais
 const socialLinks = [
   {
     icon: Github,
-    label: 'GitHub',
-    href: 'https://github.com/devguimaraes',
-    username: '@devguimaraes'
+    label: "GitHub",
+    href: "https://github.com/devguimaraes",
+    username: "@devguimaraes",
   },
   {
     icon: Linkedin,
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/bcguimaraes/',
-    username: '/in/bcguimaraes'
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/bcguimaraes/",
+    username: "/in/bcguimaraes",
   },
   {
     icon: Instagram,
-    label: 'Instagram',
-    href: 'https://www.instagram.com/brunoguimraes/',
-    username: '@brunoguimraes'
-  }
-]
-
-
+    label: "Instagram",
+    href: "https://www.instagram.com/brunoguimraes/",
+    username: "@brunoguimraes",
+  },
+];
 
 export function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    project: '',
-    budget: '',
-    message: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+    name: "",
+    email: "",
+    phone: "",
+    project: "",
+    budget: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
+    e.preventDefault();
+    setIsSubmitting(true);
+
     // Simula envio do formulário
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+
     // Reset form after 3 seconds
     setTimeout(() => {
-      setIsSubmitted(false)
+      setIsSubmitted(false);
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        project: '',
-        budget: '',
-        message: ''
-      })
-    }, 3000)
-  }
+        name: "",
+        email: "",
+        phone: "",
+        project: "",
+        budget: "",
+        message: "",
+      });
+    }, 3000);
+  };
 
   return (
     <section id="contact" className="py-20 bg-background">
@@ -124,10 +132,13 @@ export function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Vamos Conversar?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Vamos Conversar?
+          </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Tem um projeto em mente? Entre em contato e vamos transformar sua ideia em realidade. 
-            Respondo rapidamente e ofereço orçamento sem compromisso.
+            Tem um projeto em mente? Entre em contato e vamos transformar sua
+            ideia em realidade. Respondo rapidamente e ofereço orçamento sem
+            compromisso.
           </p>
         </motion.div>
 
@@ -158,9 +169,12 @@ export function Contact() {
                     className="text-center py-8"
                   >
                     <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-xl font-semibold mb-2">Mensagem Enviada!</h3>
+                    <h3 className="text-xl font-semibold mb-2">
+                      Mensagem Enviada!
+                    </h3>
                     <p className="text-muted-foreground">
-                      Obrigado pelo contato. Retornarei em breve com uma proposta personalizada.
+                      Obrigado pelo contato. Retornarei em breve com uma
+                      proposta personalizada.
                     </p>
                   </motion.div>
                 ) : (
@@ -254,9 +268,9 @@ export function Contact() {
                       />
                     </div>
 
-                    <Button 
-                      type="submit" 
-                      className="w-full" 
+                    <Button
+                      type="submit"
+                      className="w-full"
                       size="lg"
                       disabled={isSubmitting}
                     >
@@ -277,9 +291,8 @@ export function Contact() {
               </CardContent>
             </Card>
           </motion.div>
-
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,86 +1,96 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Progress } from '@/components/ui/progress'
-import { 
-  Code2, 
-  Database, 
-  Globe, 
-  Smartphone, 
-  Server, 
+import React from "react";
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import {
+  Code2,
+  Database,
+  Globe,
+  Smartphone,
+  Server,
   Palette,
   Calendar,
   MapPin,
   GraduationCap,
-  Briefcase
-} from 'lucide-react'
+  Briefcase,
+} from "lucide-react";
 
 // Dados das skills técnicas
 const technicalSkills = [
-  { name: 'React/Next.js', level: 95, icon: Code2, color: 'bg-blue-500' },
-  { name: 'TypeScript', level: 90, icon: Code2, color: 'bg-blue-600' },
-  { name: 'Node.js', level: 85, icon: Server, color: 'bg-green-500' },
-  { name: 'WordPress', level: 92, icon: Globe, color: 'bg-blue-700' },
-  { name: 'PHP', level: 75, icon: Code2, color: 'bg-purple-500' },
-  { name: 'Supabase', level: 85, icon: Database, color: 'bg-green-600' },
-  { name: 'SEO', level: 99, icon: Globe, color: 'bg-yellow-500' },
-  { name: 'Tailwind CSS', level: 95, icon: Palette, color: 'bg-cyan-500' },
-  { name: 'React Native', level: 75, icon: Smartphone, color: 'bg-blue-400' }
-]
+  { name: "React/Next.js", level: 95, icon: Code2, color: "bg-blue-500" },
+  { name: "TypeScript", level: 90, icon: Code2, color: "bg-blue-600" },
+  { name: "Node.js", level: 85, icon: Server, color: "bg-green-500" },
+  { name: "WordPress", level: 92, icon: Globe, color: "bg-blue-700" },
+  { name: "PHP", level: 75, icon: Code2, color: "bg-purple-500" },
+  { name: "Supabase", level: 85, icon: Database, color: "bg-green-600" },
+  { name: "SEO", level: 99, icon: Globe, color: "bg-yellow-500" },
+  { name: "Tailwind CSS", level: 95, icon: Palette, color: "bg-cyan-500" },
+  { name: "React Native", level: 75, icon: Smartphone, color: "bg-blue-400" },
+];
 
 // Experiências profissionais
 const experiences = [
   {
-    title: 'Desenvolvedor Full Stack Freelancer',
-    company: 'Autônomo',
-    period: '2020 - Presente',
-    location: 'Rio de Janeiro, RJ',
-    description: 'Desenvolvimento de aplicações web e mobile para diversos clientes, especializado em React, Next.js, WordPress e soluções personalizadas.',
+    title: "Desenvolvedor Full Stack Freelancer",
+    company: "Autônomo",
+    period: "2020 - Presente",
+    location: "Rio de Janeiro, RJ",
+    description:
+      "Desenvolvimento de aplicações web e mobile para diversos clientes, especializado em React, Next.js, WordPress e soluções personalizadas.",
     achievements: [
-      'Mais de 50 projetos entregues com sucesso',
-      'Desenvolvimento de e-commerces e sistemas corporativos',
-      'Integração com APIs e sistemas de pagamento',
-      'Otimização de performance e SEO'
-    ]
+      "Mais de 50 projetos entregues com sucesso",
+      "Desenvolvimento de e-commerces e sistemas corporativos",
+      "Integração com APIs e sistemas de pagamento",
+      "Otimização de performance e SEO",
+    ],
   },
   {
-    title: 'Desenvolvedor WordPress',
-    company: 'Agência Digital',
-    period: '2018 - 2020',
-    location: 'Rio de Janeiro, RJ',
-    description: 'Desenvolvimento de temas e plugins personalizados para WordPress, criação de sites institucionais e e-commerces.',
+    title: "Desenvolvedor WordPress",
+    company: "Agência Digital",
+    period: "2018 - 2020",
+    location: "Rio de Janeiro, RJ",
+    description:
+      "Desenvolvimento de temas e plugins personalizados para WordPress, criação de sites institucionais e e-commerces.",
     achievements: [
-      'Criação de mais de 30 temas personalizados',
-      'Desenvolvimento de plugins para funcionalidades específicas',
-      'Otimização de sites para performance e SEO',
-      'Treinamento de equipe em WordPress'
-    ]
-  }
-]
+      "Criação de mais de 30 temas personalizados",
+      "Desenvolvimento de plugins para funcionalidades específicas",
+      "Otimização de sites para performance e SEO",
+      "Treinamento de equipe em WordPress",
+    ],
+  },
+];
 
 // Formação acadêmica
 const education = [
   {
-    degree: 'Análise e Desenvolvimento de Sistemas',
-    institution: 'Faculdade de Tecnologia',
-    period: '2016 - 2018',
-    description: 'Formação focada em desenvolvimento de software, banco de dados e engenharia de software.'
+    degree: "Análise e Desenvolvimento de Sistemas",
+    institution: "Faculdade de Tecnologia",
+    period: "2016 - 2018",
+    description:
+      "Formação focada em desenvolvimento de software, banco de dados e engenharia de software.",
   },
   {
-    degree: 'Certificações em Desenvolvimento Web',
-    institution: 'Cursos Online e Bootcamps',
-    period: '2018 - Presente',
-    description: 'Certificações em React, Node.js, TypeScript, Next.js e outras tecnologias modernas.'
-  }
-]
+    degree: "Certificações em Desenvolvimento Web",
+    institution: "Cursos Online e Bootcamps",
+    period: "2018 - Presente",
+    description:
+      "Certificações em React, Node.js, TypeScript, Next.js e outras tecnologias modernas.",
+  },
+];
 
 export function About() {
   // Gera ID único para este componente
-  const componentId = React.useId()
-  
+  const componentId = React.useId();
+
   return (
     <section id="about" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -94,9 +104,9 @@ export function About() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mim</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Desenvolvedor Full Stack apaixonado por criar soluções digitais inovadoras. 
-            Com mais de 5 anos de experiência, especializo-me em tecnologias modernas 
-            e entrego projetos de alta qualidade.
+            Desenvolvedor Full Stack apaixonado por criar soluções digitais
+            inovadoras. Com mais de 5 anos de experiência, especializo-me em
+            tecnologias modernas e entrego projetos de alta qualidade.
           </p>
         </motion.div>
 
@@ -132,13 +142,13 @@ export function About() {
                     />
                   </div>
                 </motion.div>
-                
+
                 <p className="text-muted-foreground">
-                  Sou um desenvolvedor Full Stack com sólida experiência em tecnologias 
-                  front-end e back-end. Minha paixão é transformar ideias em soluções 
-                  digitais funcionais e elegantes.
+                  Sou um desenvolvedor Full Stack com sólida experiência em
+                  tecnologias front-end e back-end. Minha paixão é transformar
+                  ideias em soluções digitais funcionais e elegantes.
                 </p>
-                
+
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4 text-muted-foreground" />
@@ -206,7 +216,9 @@ export function About() {
                           <skill.icon className="h-4 w-4" />
                           <span className="font-medium">{skill.name}</span>
                         </div>
-                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                        <span className="text-sm text-muted-foreground">
+                          {skill.level}%
+                        </span>
                       </div>
                       <Progress value={skill.level} className="h-2" />
                     </motion.div>
@@ -225,7 +237,9 @@ export function About() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h3 className="text-2xl font-bold mb-8 text-center">Experiência Profissional</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center">
+            Experiência Profissional
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {experiences.map((exp, index) => (
               <motion.div
@@ -257,12 +271,20 @@ export function About() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4 text-sm">{exp.description}</p>
+                    <p className="text-muted-foreground mb-4 text-sm">
+                      {exp.description}
+                    </p>
                     <div>
-                      <h5 className="font-semibold mb-2 text-sm">Principais conquistas:</h5>
+                      <h5 className="font-semibold mb-2 text-sm">
+                        Principais conquistas:
+                      </h5>
                       <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground">
                         {exp.achievements.map((achievement, i) => (
-                          <li key={`${componentId}-achievement-${exp.title}-${i}`}>{achievement}</li>
+                          <li
+                            key={`${componentId}-achievement-${exp.title}-${i}`}
+                          >
+                            {achievement}
+                          </li>
                         ))}
                       </ul>
                     </div>
@@ -305,7 +327,9 @@ export function About() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground text-sm">{edu.description}</p>
+                    <p className="text-muted-foreground text-sm">
+                      {edu.description}
+                    </p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -314,5 +338,5 @@ export function About() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

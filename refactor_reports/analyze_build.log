@@ -1,0 +1,42 @@
+
+> portfolio-bruno-guimaraes@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.4
+   - Experiments (use with caution):
+     ✓ optimizeCss
+     · optimizePackageImports
+
+   Creating an optimized production build ...
+Webpack Bundle Analyzer saved report to /home/devguimaraes/estudo/Portif-lio-Bruno-Guimar-es-/.next/analyze/nodejs.html
+
+No bundles were parsed. Analyzer will show only original module sizes from stats file.
+
+Webpack Bundle Analyzer saved report to /home/devguimaraes/estudo/Portif-lio-Bruno-Guimar-es-/.next/analyze/edge.html
+Webpack Bundle Analyzer saved report to /home/devguimaraes/estudo/Portif-lio-Bruno-Guimar-es-/.next/analyze/client.html
+ ✓ Compiled successfully in 5.2s
+   Skipping linting
+   Checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/8) ...
+   Generating static pages (2/8) 
+   Generating static pages (4/8) 
+   Generating static pages (6/8) 
+ ✓ Generating static pages (8/8)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    16.9 kB         164 kB
+├ ○ /_not-found                            994 B         103 kB
+├ ○ /manifest.webmanifest                  130 B         102 kB
+├ ○ /robots.txt                            130 B         102 kB
+└ ○ /sitemap.xml                           130 B         102 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/255-4efeec91c7871d79.js       45.7 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)           1.9 kB
+
+
+○  (Static)  prerendered as static content
+

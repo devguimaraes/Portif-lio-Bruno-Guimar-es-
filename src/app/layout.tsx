@@ -13,8 +13,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Bruno Guimarães - Desenvolvedor Full Stack",
-  description: "Desenvolvedor Full Stack especializado em React, Next.js, Node.js e WordPress. Criando soluções digitais inovadoras para empresas e startups.",
-  keywords: "desenvolvedor, full stack, react, nextjs, nodejs, wordpress, freelancer, bruno guimarães, desenvolvimento web, aplicações web, ecommerce, sistemas web",
+  description:
+    "Desenvolvedor Full Stack especializado em React, Next.js, Node.js e WordPress. Criando soluções digitais inovadoras para empresas e startups.",
+  keywords:
+    "desenvolvedor, full stack, react, nextjs, nodejs, wordpress, freelancer, bruno guimarães, desenvolvimento web, aplicações web, ecommerce, sistemas web",
   authors: [{ name: "Bruno Guimarães" }],
   creator: "Bruno Guimarães",
   publisher: "Bruno Guimarães",
@@ -27,7 +29,8 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://brunoguimaraes.dev",
     title: "Bruno Guimarães - Desenvolvedor Full Stack",
-    description: "Desenvolvedor Full Stack especializado em React, Next.js, Node.js e WordPress. Criando soluções digitais inovadoras para empresas e startups.",
+    description:
+      "Desenvolvedor Full Stack especializado em React, Next.js, Node.js e WordPress. Criando soluções digitais inovadoras para empresas e startups.",
     siteName: "Bruno Guimarães Portfolio",
     images: [
       {
@@ -41,7 +44,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Bruno Guimarães - Desenvolvedor Full Stack",
-    description: "Desenvolvedor Full Stack especializado em React, Next.js, Node.js e WordPress.",
+    description:
+      "Desenvolvedor Full Stack especializado em React, Next.js, Node.js e WordPress.",
     images: ["/og-image.jpg"],
     creator: "@brunoguimaraes",
   },
@@ -73,9 +77,7 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body className="antialiased font-sans">
-        <MainLayout>
-          {children}
-        </MainLayout>
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );
