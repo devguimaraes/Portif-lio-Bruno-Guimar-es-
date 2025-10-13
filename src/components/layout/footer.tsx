@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
-import { NAVIGATION_ITEMS } from '@/constants'
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { NAVIGATION_ITEMS } from "@/constants";
 
 export function Footer() {
   return (
@@ -21,15 +21,17 @@ export function Footer() {
             >
               <h3 className="text-xl font-bold mb-4">Bruno Guimarães</h3>
               <p className="text-muted-foreground mb-6 max-w-md">
-                Desenvolvedor Full Stack especializado em React, Next.js, Node.js e WordPress. Criando soluções digitais inovadoras para empresas e startups.
+                Desenvolvedor Full Stack especializado em React, Next.js,
+                Node.js e WordPress. Criando soluções digitais inovadoras para
+                empresas e startups.
               </p>
-              
+
               {/* Links sociais */}
               <div className="flex space-x-4">
                 <Button variant="outline" size="icon" asChild>
-                  <a 
-                    href="https://github.com/devguimaraes" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/devguimaraes"
+                    target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub"
                   >
@@ -37,9 +39,9 @@ export function Footer() {
                   </a>
                 </Button>
                 <Button variant="outline" size="icon" asChild>
-                  <a 
-                    href="https://www.linkedin.com/in/bcguimaraes/" 
-                    target="_blank" 
+                  <a
+                    href="https://www.linkedin.com/in/bcguimaraes/"
+                    target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                   >
@@ -47,10 +49,7 @@ export function Footer() {
                   </a>
                 </Button>
                 <Button variant="outline" size="icon" asChild>
-                  <a 
-                    href="mailto:devgmrs@gmail.com"
-                    aria-label="Email"
-                  >
+                  <a href="mailto:devgmrs@gmail.com" aria-label="Email">
                     <Mail className="h-4 w-4" />
                   </a>
                 </Button>
@@ -70,7 +69,7 @@ export function Footer() {
               <ul className="space-y-2">
                 {NAVIGATION_ITEMS.map((item) => (
                   <li key={item.href}>
-                    <a 
+                    <a
                       href={item.href}
                       className="text-muted-foreground hover:text-foreground transition-colors"
                     >
@@ -120,10 +119,11 @@ export function Footer() {
           className="text-center text-sm text-muted-foreground"
         >
           <p>
-            © {new Date().getFullYear()} Bruno Guimarães. Todos os direitos reservados.
+            © {new Date().getFullYear()} Bruno Guimarães. Todos os direitos
+            reservados.
           </p>
         </motion.div>
       </div>
     </footer>
-  )
+  );
 }

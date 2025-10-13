@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
 
 const nextConfig: NextConfig = {
   // Otimizações de performance
@@ -53,4 +54,4 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 };
 
-export default nextConfig;
+export default bundleAnalyzer({ enabled: process.env.ANALYZE === "true" })(nextConfig);

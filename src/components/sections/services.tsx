@@ -1,114 +1,123 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { 
-  Code2, 
-  Globe, 
-  Smartphone, 
-  Database, 
-  Headphones, 
+import React from "react";
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Code2,
+  Globe,
+  Smartphone,
+  Database,
+  Headphones,
   Rocket,
   Check,
   Users,
-  Settings
-} from 'lucide-react'
+  Settings,
+} from "lucide-react";
 
 // Serviços oferecidos
 const services = [
   {
     id: 1,
     icon: Globe,
-    title: 'Desenvolvimento Web',
-    description: 'Sites e aplicações web modernas com React, Next.js e tecnologias atuais.',
+    title: "Desenvolvimento Web",
+    description:
+      "Sites e aplicações web modernas com React, Next.js e tecnologias atuais.",
     features: [
-      'Design responsivo e moderno',
-      'SEO otimizado',
-      'Performance de alta velocidade',
-      'Integração com APIs',
-      'Painel administrativo'
+      "Design responsivo e moderno",
+      "SEO otimizado",
+      "Performance de alta velocidade",
+      "Integração com APIs",
+      "Painel administrativo",
     ],
-    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS']
+    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
   },
   {
     id: 2,
     icon: Smartphone,
-    title: 'Aplicativos Mobile',
-    description: 'Apps nativos e híbridos para iOS e Android com React Native.',
+    title: "Aplicativos Mobile",
+    description: "Apps nativos e híbridos para iOS e Android com React Native.",
     features: [
-      'Interface nativa',
-      'Notificações push',
-      'Integração com APIs',
-      'Publicação nas lojas',
-      'Suporte multiplataforma'
+      "Interface nativa",
+      "Notificações push",
+      "Integração com APIs",
+      "Publicação nas lojas",
+      "Suporte multiplataforma",
     ],
-    technologies: ['React Native', 'Expo', 'Firebase', 'TypeScript']
+    technologies: ["React Native", "Expo", "Firebase", "TypeScript"],
   },
   {
     id: 3,
     icon: Database,
-    title: 'Sistemas Corporativos',
-    description: 'ERPs, CRMs e sistemas de gestão personalizados para sua empresa.',
+    title: "Sistemas Corporativos",
+    description:
+      "ERPs, CRMs e sistemas de gestão personalizados para sua empresa.",
     features: [
-      'Módulos personalizados',
-      'Relatórios avançados',
-      'Sistema de permissões',
-      'Integração com sistemas existentes',
-      'Backup automático'
+      "Módulos personalizados",
+      "Relatórios avançados",
+      "Sistema de permissões",
+      "Integração com sistemas existentes",
+      "Backup automático",
     ],
-    technologies: ['Node.js', 'PostgreSQL', 'Redis', 'Docker']
+    technologies: ["Node.js", "PostgreSQL", "Redis", "Docker"],
   },
   {
     id: 4,
     icon: Code2,
-    title: 'WordPress Personalizado',
-    description: 'Sites WordPress com temas e plugins desenvolvidos sob medida.',
+    title: "WordPress Personalizado",
+    description:
+      "Sites WordPress com temas e plugins desenvolvidos sob medida.",
     features: [
-      'Tema 100% personalizado',
-      'Plugins exclusivos',
-      'Painel administrativo intuitivo',
-      'SEO otimizado',
-      'Treinamento incluído'
+      "Tema 100% personalizado",
+      "Plugins exclusivos",
+      "Painel administrativo intuitivo",
+      "SEO otimizado",
+      "Treinamento incluído",
     ],
-    technologies: ['WordPress', 'PHP', 'MySQL', 'JavaScript']
-  }
-]
+    technologies: ["WordPress", "PHP", "MySQL", "JavaScript"],
+  },
+];
 
 // Processo de trabalho
 const workProcess = [
   {
     step: 1,
-    title: 'Briefing',
-    description: 'Entendemos suas necessidades e objetivos',
-    icon: Users
+    title: "Briefing",
+    description: "Entendemos suas necessidades e objetivos",
+    icon: Users,
   },
   {
     step: 2,
-    title: 'Planejamento',
-    description: 'Criamos a estratégia e arquitetura do projeto',
-    icon: Settings
+    title: "Planejamento",
+    description: "Criamos a estratégia e arquitetura do projeto",
+    icon: Settings,
   },
   {
     step: 3,
-    title: 'Desenvolvimento',
-    description: 'Codificamos sua solução com as melhores práticas',
-    icon: Code2
+    title: "Desenvolvimento",
+    description: "Codificamos sua solução com as melhores práticas",
+    icon: Code2,
   },
   {
     step: 4,
-    title: 'Entrega',
-    description: 'Testamos, otimizamos e colocamos no ar',
-    icon: Rocket
-  }
-]
+    title: "Entrega",
+    description: "Testamos, otimizamos e colocamos no ar",
+    icon: Rocket,
+  },
+];
 
 export function Services() {
   // Gera ID único para este componente
-  const componentId = React.useId()
-  
+  const componentId = React.useId();
+
   return (
     <section id="services" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -122,8 +131,9 @@ export function Services() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Meus Serviços</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ofereço soluções completas de desenvolvimento, desde sites simples até 
-            sistemas corporativos complexos, sempre com foco na qualidade e resultados.
+            Ofereço soluções completas de desenvolvimento, desde sites simples
+            até sistemas corporativos complexos, sempre com foco na qualidade e
+            resultados.
           </p>
         </motion.div>
 
@@ -150,19 +160,26 @@ export function Services() {
                     <h5 className="font-semibold mb-2 text-sm">Inclui:</h5>
                     <ul className="space-y-1">
                       {service.features.map((feature, i) => (
-                        <li key={`${componentId}-feature-${service.id}-${i}`} className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <li
+                          key={`${componentId}-feature-${service.id}-${i}`}
+                          className="flex items-center gap-2 text-sm text-muted-foreground"
+                        >
                           <Check className="h-3 w-3 text-green-500" />
                           {feature}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h5 className="font-semibold mb-2 text-sm">Tecnologias:</h5>
                     <div className="flex flex-wrap gap-1">
                       {service.technologies.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="text-xs">
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="text-xs"
+                        >
                           {tech}
                         </Badge>
                       ))}
@@ -182,7 +199,9 @@ export function Services() {
           viewport={{ once: true }}
         >
           <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Como Trabalhamos</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              Como Trabalhamos
+            </h3>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Um processo estruturado para garantir o sucesso do seu projeto.
             </p>
@@ -207,7 +226,9 @@ export function Services() {
                   </div>
                 </div>
                 <h4 className="font-semibold mb-2">{process.title}</h4>
-                <p className="text-sm text-muted-foreground">{process.description}</p>
+                <p className="text-sm text-muted-foreground">
+                  {process.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -221,9 +242,12 @@ export function Services() {
           viewport={{ once: true }}
           className="text-center mt-16 p-8 bg-primary/5 rounded-lg"
         >
-          <h3 className="text-2xl font-bold mb-4">Pronto para começar seu projeto?</h3>
+          <h3 className="text-2xl font-bold mb-4">
+            Pronto para começar seu projeto?
+          </h3>
           <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            Entre em contato para discutirmos sua ideia e criarmos algo incrível juntos.
+            Entre em contato para discutirmos sua ideia e criarmos algo incrível
+            juntos.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
@@ -233,7 +257,11 @@ export function Services() {
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
-              <a href="https://wa.me/5521969715247" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://wa.me/5521969715247"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 WhatsApp
               </a>
             </Button>
@@ -241,5 +269,5 @@ export function Services() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

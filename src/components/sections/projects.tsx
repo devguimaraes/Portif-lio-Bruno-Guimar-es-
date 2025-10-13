@@ -1,158 +1,171 @@
-'use client'
+"use client";
 
-import React from 'react'
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { 
-  ExternalLink, 
-  Github, 
-  Globe, 
-  Smartphone, 
+import React from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  ExternalLink,
+  Github,
+  Globe,
+  Smartphone,
   Building2,
   Code2,
-  Zap
-} from 'lucide-react'
+  Zap,
+} from "lucide-react";
 
 // Dados dos projetos
 const projects = [
   {
     id: 1,
-    title: 'E-commerce Moderno',
-    description: 'Plataforma completa de e-commerce com carrinho, pagamentos, gestão de produtos e painel administrativo.',
-    image: '/api/placeholder/600/400',
-    category: 'web',
-    technologies: ['Next.js', 'TypeScript', 'Stripe', 'Prisma', 'PostgreSQL'],
+    title: "E-commerce Moderno",
+    description:
+      "Plataforma completa de e-commerce com carrinho, pagamentos, gestão de produtos e painel administrativo.",
+    image: "/api/placeholder/600/400",
+    category: "web",
+    technologies: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL"],
     features: [
-      'Sistema de pagamentos integrado',
-      'Painel administrativo completo',
-      'Gestão de estoque em tempo real',
-      'SEO otimizado'
+      "Sistema de pagamentos integrado",
+      "Painel administrativo completo",
+      "Gestão de estoque em tempo real",
+      "SEO otimizado",
     ],
-    liveUrl: 'https://ecommerce-demo.vercel.app',
-    githubUrl: 'https://github.com/brunoguimaraes/ecommerce',
-    status: 'completed',
-    year: '2024'
+    liveUrl: "https://ecommerce-demo.vercel.app",
+    githubUrl: "https://github.com/brunoguimaraes/ecommerce",
+    status: "completed",
+    year: "2024",
   },
   {
     id: 2,
-    title: 'App de Delivery',
-    description: 'Aplicativo mobile para delivery de comida com geolocalização, pagamentos e tracking em tempo real.',
-    image: '/api/placeholder/600/400',
-    category: 'mobile',
-    technologies: ['React Native', 'Node.js', 'MongoDB', 'Socket.io', 'Stripe'],
+    title: "App de Delivery",
+    description:
+      "Aplicativo mobile para delivery de comida com geolocalização, pagamentos e tracking em tempo real.",
+    image: "/api/placeholder/600/400",
+    category: "mobile",
+    technologies: ["React Native", "Node.js", "MongoDB", "Socket.io", "Stripe"],
     features: [
-      'Geolocalização em tempo real',
-      'Sistema de pagamentos',
-      'Chat entre cliente e entregador',
-      'Notificações push'
+      "Geolocalização em tempo real",
+      "Sistema de pagamentos",
+      "Chat entre cliente e entregador",
+      "Notificações push",
     ],
-    liveUrl: 'https://play.google.com/store/apps/details?id=com.delivery',
-    githubUrl: 'https://github.com/brunoguimaraes/delivery-app',
-    status: 'completed',
-    year: '2024'
+    liveUrl: "https://play.google.com/store/apps/details?id=com.delivery",
+    githubUrl: "https://github.com/brunoguimaraes/delivery-app",
+    status: "completed",
+    year: "2024",
   },
   {
     id: 3,
-    title: 'Sistema Corporativo',
-    description: 'ERP completo para gestão empresarial com módulos de vendas, estoque, financeiro e relatórios.',
-    image: '/api/placeholder/600/400',
-    category: 'web',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'Docker'],
+    title: "Sistema Corporativo",
+    description:
+      "ERP completo para gestão empresarial com módulos de vendas, estoque, financeiro e relatórios.",
+    image: "/api/placeholder/600/400",
+    category: "web",
+    technologies: ["React", "Node.js", "PostgreSQL", "Redis", "Docker"],
     features: [
-      'Módulos integrados de gestão',
-      'Relatórios avançados',
-      'Sistema de permissões',
-      'API REST completa'
+      "Módulos integrados de gestão",
+      "Relatórios avançados",
+      "Sistema de permissões",
+      "API REST completa",
     ],
-    liveUrl: 'https://erp-demo.com',
+    liveUrl: "https://erp-demo.com",
     githubUrl: null, // Projeto privado
-    status: 'completed',
-    year: '2023'
+    status: "completed",
+    year: "2023",
   },
   {
     id: 4,
-    title: 'Site Institucional Premium',
-    description: 'Website institucional moderno com CMS personalizado, blog e sistema de contato.',
-    image: '/api/placeholder/600/400',
-    category: 'wordpress',
-    technologies: ['WordPress', 'PHP', 'MySQL', 'SCSS', 'JavaScript'],
+    title: "Site Institucional Premium",
+    description:
+      "Website institucional moderno com CMS personalizado, blog e sistema de contato.",
+    image: "/api/placeholder/600/400",
+    category: "wordpress",
+    technologies: ["WordPress", "PHP", "MySQL", "SCSS", "JavaScript"],
     features: [
-      'CMS personalizado',
-      'Blog integrado',
-      'SEO otimizado',
-      'Design responsivo'
+      "CMS personalizado",
+      "Blog integrado",
+      "SEO otimizado",
+      "Design responsivo",
     ],
-    liveUrl: 'https://empresa-premium.com.br',
+    liveUrl: "https://empresa-premium.com.br",
     githubUrl: null,
-    status: 'completed',
-    year: '2023'
+    status: "completed",
+    year: "2023",
   },
   {
     id: 5,
-    title: 'Dashboard Analytics',
-    description: 'Dashboard interativo para análise de dados com gráficos em tempo real e relatórios customizáveis.',
-    image: '/api/placeholder/600/400',
-    category: 'web',
-    technologies: ['React', 'D3.js', 'Node.js', 'MongoDB', 'WebSocket'],
+    title: "Dashboard Analytics",
+    description:
+      "Dashboard interativo para análise de dados com gráficos em tempo real e relatórios customizáveis.",
+    image: "/api/placeholder/600/400",
+    category: "web",
+    technologies: ["React", "D3.js", "Node.js", "MongoDB", "WebSocket"],
     features: [
-      'Gráficos interativos',
-      'Dados em tempo real',
-      'Relatórios customizáveis',
-      'Exportação de dados'
+      "Gráficos interativos",
+      "Dados em tempo real",
+      "Relatórios customizáveis",
+      "Exportação de dados",
     ],
-    liveUrl: 'https://analytics-dashboard.vercel.app',
-    githubUrl: 'https://github.com/brunoguimaraes/analytics-dashboard',
-    status: 'completed',
-    year: '2024'
+    liveUrl: "https://analytics-dashboard.vercel.app",
+    githubUrl: "https://github.com/brunoguimaraes/analytics-dashboard",
+    status: "completed",
+    year: "2024",
   },
   {
     id: 6,
-    title: 'Plataforma de Cursos',
-    description: 'LMS completo com sistema de aulas, exercícios, certificados e pagamentos.',
-    image: '/api/placeholder/600/400',
-    category: 'web',
-    technologies: ['Next.js', 'Supabase', 'Stripe', 'Tailwind', 'TypeScript'],
+    title: "Plataforma de Cursos",
+    description:
+      "LMS completo com sistema de aulas, exercícios, certificados e pagamentos.",
+    image: "/api/placeholder/600/400",
+    category: "web",
+    technologies: ["Next.js", "Supabase", "Stripe", "Tailwind", "TypeScript"],
     features: [
-      'Sistema de aulas em vídeo',
-      'Exercícios interativos',
-      'Certificados automáticos',
-      'Área do aluno completa'
+      "Sistema de aulas em vídeo",
+      "Exercícios interativos",
+      "Certificados automáticos",
+      "Área do aluno completa",
     ],
     liveUrl: null,
-    githubUrl: 'https://github.com/brunoguimaraes/lms-platform',
-    status: 'in-progress',
-    year: '2024'
-  }
-]
+    githubUrl: "https://github.com/brunoguimaraes/lms-platform",
+    status: "in-progress",
+    year: "2024",
+  },
+];
 
 // Categorias de filtro
 const categories = [
-  { id: 'all', label: 'Todos', icon: Code2 },
-  { id: 'web', label: 'Web Apps', icon: Globe },
-  { id: 'mobile', label: 'Mobile', icon: Smartphone },
-  { id: 'wordpress', label: 'WordPress', icon: Building2 }
-]
+  { id: "all", label: "Todos", icon: Code2 },
+  { id: "web", label: "Web Apps", icon: Globe },
+  { id: "mobile", label: "Mobile", icon: Smartphone },
+  { id: "wordpress", label: "WordPress", icon: Building2 },
+];
 
 // Status dos projetos
 const statusConfig = {
-  completed: { label: 'Concluído', color: 'bg-green-500' },
-  'in-progress': { label: 'Em Desenvolvimento', color: 'bg-yellow-500' }
-}
+  completed: { label: "Concluído", color: "bg-green-500" },
+  "in-progress": { label: "Em Desenvolvimento", color: "bg-yellow-500" },
+};
 
 export function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState('all')
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
-  
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+
   // Gera ID único para este componente
-  const componentId = React.useId()
+  const componentId = React.useId();
 
   // Filtrar projetos por categoria
-  const filteredProjects = selectedCategory === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory)
+  const filteredProjects =
+    selectedCategory === "all"
+      ? projects
+      : projects.filter((project) => project.category === selectedCategory);
 
   return (
     <section id="projects" className="py-20 bg-background">
@@ -167,8 +180,9 @@ export function Projects() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Meus Projetos</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Uma seleção dos meus trabalhos mais recentes, incluindo aplicações web, 
-            mobile e soluções corporativas desenvolvidas com as mais modernas tecnologias.
+            Uma seleção dos meus trabalhos mais recentes, incluindo aplicações
+            web, mobile e soluções corporativas desenvolvidas com as mais
+            modernas tecnologias.
           </p>
         </motion.div>
 
@@ -183,7 +197,7 @@ export function Projects() {
           {categories.map((category) => (
             <Button
               key={category.id}
-              variant={selectedCategory === category.id ? 'default' : 'outline'}
+              variant={selectedCategory === category.id ? "default" : "outline"}
               onClick={() => setSelectedCategory(category.id)}
               className="flex items-center gap-2"
             >
@@ -211,33 +225,39 @@ export function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
                     <div className="text-center">
                       <Code2 className="h-12 w-12 mx-auto mb-2 text-muted-foreground" />
-                      <p className="text-sm text-muted-foreground">Preview do Projeto</p>
+                      <p className="text-sm text-muted-foreground">
+                        Preview do Projeto
+                      </p>
                     </div>
                   </div>
-                  
+
                   {/* Status badge */}
                   <div className="absolute top-3 right-3">
-                    <Badge 
-                      variant="secondary" 
+                    <Badge
+                      variant="secondary"
                       className={`${statusConfig[project.status as keyof typeof statusConfig].color} text-white`}
                     >
-{statusConfig[project.status as keyof typeof statusConfig].label}
+                      {
+                        statusConfig[
+                          project.status as keyof typeof statusConfig
+                        ].label
+                      }
                     </Badge>
                   </div>
 
                   {/* Overlay com links */}
                   <motion.div
                     initial={{ opacity: 0 }}
-                    animate={{ 
-                      opacity: hoveredProject === project.id ? 1 : 0 
+                    animate={{
+                      opacity: hoveredProject === project.id ? 1 : 0,
                     }}
                     className="absolute inset-0 bg-black/60 flex items-center justify-center gap-4"
                   >
                     {project.liveUrl && (
                       <Button size="sm" asChild>
-                        <a 
-                          href={project.liveUrl} 
-                          target="_blank" 
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-2"
                         >
@@ -248,9 +268,9 @@ export function Projects() {
                     )}
                     {project.githubUrl && (
                       <Button size="sm" variant="outline" asChild>
-                        <a 
-                          href={project.githubUrl} 
-                          target="_blank" 
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-2"
                         >
@@ -283,7 +303,11 @@ export function Projects() {
                     <h5 className="text-sm font-semibold mb-2">Tecnologias:</h5>
                     <div className="flex flex-wrap gap-1">
                       {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="text-xs">
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="text-xs"
+                        >
                           {tech}
                         </Badge>
                       ))}
@@ -292,10 +316,15 @@ export function Projects() {
 
                   {/* Features principais */}
                   <div>
-                    <h5 className="text-sm font-semibold mb-2">Principais features:</h5>
+                    <h5 className="text-sm font-semibold mb-2">
+                      Principais features:
+                    </h5>
                     <ul className="text-xs text-muted-foreground space-y-1">
                       {project.features.slice(0, 3).map((feature, i) => (
-                        <li key={`${componentId}-feature-${project.id}-${i}`} className="flex items-center gap-2">
+                        <li
+                          key={`${componentId}-feature-${project.id}-${i}`}
+                          className="flex items-center gap-2"
+                        >
                           <Zap className="h-3 w-3 text-green-500" />
                           {feature}
                         </li>
@@ -307,9 +336,9 @@ export function Projects() {
                   <div className="flex gap-2 pt-2">
                     {project.liveUrl && (
                       <Button size="sm" className="flex-1" asChild>
-                        <a 
-                          href={project.liveUrl} 
-                          target="_blank" 
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
                           rel="noopener noreferrer"
                         >
                           <ExternalLink className="h-3 w-3 mr-1" />
@@ -318,10 +347,15 @@ export function Projects() {
                       </Button>
                     )}
                     {project.githubUrl && (
-                      <Button size="sm" variant="outline" className="flex-1" asChild>
-                        <a 
-                          href={project.githubUrl} 
-                          target="_blank" 
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1"
+                        asChild
+                      >
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
                           rel="noopener noreferrer"
                         >
                           <Github className="h-3 w-3 mr-1" />
@@ -346,16 +380,14 @@ export function Projects() {
         >
           <h3 className="text-2xl font-bold mb-4">Gostou do que viu?</h3>
           <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            Estes são apenas alguns dos meus projetos. Vamos conversar sobre como 
-            posso ajudar a transformar sua ideia em realidade.
+            Estes são apenas alguns dos meus projetos. Vamos conversar sobre
+            como posso ajudar a transformar sua ideia em realidade.
           </p>
           <Button size="lg" asChild>
-            <a href="#contact">
-              Vamos Conversar
-            </a>
+            <a href="#contact">Vamos Conversar</a>
           </Button>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
