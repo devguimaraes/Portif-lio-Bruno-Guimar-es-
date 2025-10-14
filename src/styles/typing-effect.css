@@ -1,0 +1,260 @@
+/* Estilos para o componente TypingEffect */
+/* Implementação nativa com CSS puro para máxima performance */
+
+.typing-effect {
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+  line-height: inherit;
+  /* Evita espaços indesejados */
+  white-space: nowrap;
+  /* Garante estabilidade visual */
+  min-height: 1em;
+}
+
+/* Texto sendo digitado */
+.typing-text {
+  display: inline;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  color: inherit;
+  /* Remove espaçamentos extras */
+  margin: 0;
+  padding: 0;
+  /* Evita quebras indesejadas */
+  white-space: nowrap;
+}
+
+/* Cursor piscante */
+.typing-cursor {
+  display: inline-block;
+  /* Remove margin que causa tremulação */
+  margin: 0;
+  /* Posicionamento mais preciso */
+  position: relative;
+  font-weight: normal;
+  color: currentColor;
+  animation: blink 1.06s infinite;
+  vertical-align: baseline;
+  /* Evita layout shifts */
+  width: 1ch;
+  text-align: center;
+}
+
+/* Animação de piscar do cursor */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Estados do cursor baseados em data attributes */
+.typing-cursor[data-cursor-visible="true"] {
+  opacity: 1;
+}
+
+.typing-cursor[data-cursor-visible="false"] {
+  opacity: 0;
+}
+
+/* Estados do componente */
+.typing-effect[data-typing-active="true"] .typing-cursor {
+  animation: blink 1.06s infinite;
+}
+
+.typing-effect[data-typing-complete="true"] .typing-cursor {
+  animation: none;
+  opacity: 0;
+}
+
+/* Acessibilidade - Respeita preferência por animações reduzidas */
+@media (prefers-reduced-motion: reduce) {
+  .typing-cursor {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+  
+  .typing-effect[data-typing-active="true"] .typing-cursor {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
+
+/* Suporte para modo escuro */
+@media (prefers-color-scheme: dark) {
+  .typing-cursor {
+    color: inherit;
+  }
+}
+
+/* Alto contraste para acessibilidade */
+@media (prefers-contrast: high) {
+  .typing-cursor {
+    font-weight: bold;
+    text-shadow: 0 0 1px currentColor;
+  }
+}
+
+/* Responsividade - Ajustes para telas pequenas */
+@media (max-width: 640px) {
+  .typing-effect {
+    /* Permite quebra de linha em telas pequenas */
+    white-space: normal;
+    word-break: break-word;
+  }
+  
+  .typing-text {
+    /* Permite quebra de linha em telas pequenas */
+    white-space: normal;
+  }
+}
+
+/* Otimizações de performance */
+.typing-effect {
+  will-change: auto;
+  transform: translateZ(0); /* Força aceleração de hardware */
+}
+
+.typing-cursor {
+  will-change: opacity;
+  backface-visibility: hidden;
+}
+
+/* Fallback para navegadores antigos */
+.typing-cursor {
+  -webkit-animation: blink 1.06s infinite;
+  -moz-animation: blink 1.06s infinite;
+  -o-animation: blink 1.06s infinite;
+}
+
+@-webkit-keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@-moz-keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@-o-keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Estados para screen readers */
+.typing-effect[aria-live="polite"] .typing-text[aria-hidden="true"] {
+  /* Garante que o texto seja anunciado corretamente */
+}
+
+/* Suporte para RTL (Right-to-Left) */
+[dir="rtl"] .typing-cursor {
+  /* Mantém posicionamento consistente */
+  margin: 0;
+}
+
+/* Melhorias visuais */
+.typing-effect {
+  /* Permite quebra de linha para suportar múltiplos segmentos */
+  white-space: normal;
+  /* Garante estabilidade durante transições */
+  contain: layout style;
+}
+
+/* Container para segmentos com quebra de linha */
+.typing-effect .typing-segment-container {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* Classes específicas para cores dos segmentos */
+/* Tema Light */
+.typing-text.text-primary-light {
+  color: #000000; /* Preto para "Eu sou" no tema light */
+}
+
+.typing-text.text-accent-light {
+  color: #22c55e; /* Verde para "Bruno Guimarães" no tema light */
+}
+
+/* Tema Dark */
+.typing-text.text-primary-dark {
+  color: #ffffff; /* Branco para "Eu sou" no tema dark */
+}
+
+.typing-text.text-accent-dark {
+  color: #22c55e; /* Verde para "Bruno Guimarães" no tema dark */
+}
+
+/* Suporte automático para temas usando CSS custom properties */
+:root {
+  --typing-primary-color: #000000;
+  --typing-accent-color: #22c55e;
+}
+
+[data-theme="dark"], .dark {
+  --typing-primary-color: #ffffff;
+  --typing-accent-color: #22c55e;
+}
+
+.typing-text.text-primary-auto {
+  color: var(--typing-primary-color);
+}
+
+.typing-text.text-accent-auto {
+  color: var(--typing-accent-color);
+}
+
+/* Suporte para Tailwind CSS classes */
+.typing-text.text-black {
+  color: #000000 !important;
+}
+
+.dark .typing-text.text-black {
+  color: #000000 !important;
+}
+
+.typing-text.text-white {
+  color: #ffffff !important;
+}
+
+.dark .typing-text.text-white {
+  color: #ffffff !important;
+}
+
+.typing-text.text-accent {
+  color: var(--accent) !important;
+}
+
+/* Suporte específico para dark mode no Tailwind */
+.dark .typing-text {
+  color: inherit;
+}
+
+.typing-text.dark\:text-white {
+  color: #000000;
+}
+
+.dark .typing-text.dark\:text-white {
+  color: #ffffff !important;
+}
+
+/* Responsividade para quebra de linha */
+@media (max-width: 640px) {
+  .typing-effect {
+    /* Permite quebra de linha em telas pequenas */
+    white-space: normal;
+    word-break: break-word;
+  }
+}
+
+/* Estados de foco para acessibilidade */
+.typing-effect:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
