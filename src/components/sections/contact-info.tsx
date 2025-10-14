@@ -22,7 +22,23 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-// Informações de contato direto
+// Função para calcular o próximo mês automaticamente
+function getNextAvailableMonth(): string {
+  const now = new Date()
+  const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1)
+  
+  const monthNames = [
+    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+  ]
+  
+  const monthName = monthNames[nextMonth.getMonth()]
+  const year = nextMonth.getFullYear()
+  
+  return `${monthName} ${year}`
+}
+
+// Informações de contato
 const contactInfo = [
   {
     icon: Mail,
@@ -216,7 +232,7 @@ export function ContactInfo() {
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-muted-foreground">Próxima vaga:</span>
-                    <span className="font-medium">Janeiro 2024</span>
+                    <span className="font-medium">{getNextAvailableMonth()}</span>
                   </div>
                 </div>
 

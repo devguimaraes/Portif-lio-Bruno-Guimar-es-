@@ -15,7 +15,7 @@ export const PERSONAL_INFO = {
     linkedin: "https://www.linkedin.com/in/bcguimaraes/",
     instagram: "https://www.instagram.com/brunoguimraes/",
   },
-  experience: "6+ anos em Desenvolvimento Web | 3+ anos em SEO Local",
+  experience: "5+ anos em Desenvolvimento Web | 3+ anos em SEO Local",
 } as const;
 
 export const UVP =

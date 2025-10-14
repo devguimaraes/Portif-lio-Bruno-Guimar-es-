@@ -3,6 +3,7 @@
 import React from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,9 +15,7 @@ import {
 } from "@/components/ui/card";
 import {
   ExternalLink,
-  Github,
   Globe,
-  Smartphone,
   Building2,
   Code2,
   Zap,
@@ -30,7 +29,7 @@ const projects = PROJECTS;
 const categories = [
   { id: "all", label: "Todos", icon: Code2 },
   { id: "web", label: "Web Apps", icon: Globe },
-  { id: "mobile", label: "Mobile", icon: Smartphone },
+  { id: "react", label: "React", icon: Code2 },
   { id: "wordpress", label: "WordPress", icon: Building2 },
 ];
 
@@ -108,14 +107,24 @@ export function Projects() {
               <Card className="h-full overflow-hidden group hover:shadow-lg transition-all duration-300">
                 {/* Imagem do projeto */}
                 <div className="relative overflow-hidden bg-muted aspect-video">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <div className="text-center">
-                      <Code2 className="h-12 w-12 mx-auto mb-2 text-muted-foreground" />
-                      <p className="text-sm text-muted-foreground">
-                        Preview do Projeto
-                      </p>
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={`Preview do projeto ${project.title}`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
+                      <div className="text-center">
+                        <Code2 className="h-12 w-12 mx-auto mb-2 text-muted-foreground" />
+                        <p className="text-sm text-muted-foreground">
+                          Preview do Projeto
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   {/* Status badge */}
                   <div className="absolute top-3 right-3">
@@ -149,19 +158,6 @@ export function Projects() {
                         >
                           <ExternalLink className="h-4 w-4" />
                           Ver Projeto
-                        </a>
-                      </Button>
-                    )}
-                    {project.githubUrl && (
-                      <Button size="sm" variant="outline" asChild>
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2"
-                        >
-                          <Github className="h-4 w-4" />
-                          Código
                         </a>
                       </Button>
                     )}
@@ -232,47 +228,12 @@ export function Projects() {
                         </a>
                       </Button>
                     )}
-                    {project.githubUrl && (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="flex-1"
-                        asChild
-                      >
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="h-3 w-3 mr-1" />
-                          Código
-                        </a>
-                      </Button>
-                    )}
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
-
-        {/* Call to action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <h3 className="text-2xl font-bold mb-4">Gostou do que viu?</h3>
-          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            Estes são apenas alguns dos meus projetos. Vamos conversar sobre
-            como posso ajudar a transformar sua ideia em realidade.
-          </p>
-          <Button size="lg" asChild>
-            <a href="#contact">Vamos Conversar</a>
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
