@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "../styles/typing-effect.css";
 import { MainLayout } from "@/components/layout";
 import { StructuredData } from "@/components/seo/structured-data";
 

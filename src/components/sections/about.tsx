@@ -55,14 +55,13 @@ const experiences = [
   },
   {
     title: "Desenvolvedor WordPress",
-    company: "Agência Digital",
-    period: "2018 - 2020",
+    company: "Agências de Marketing",
+    period: "2023 - Presente",
     location: "Rio de Janeiro, RJ",
     description:
       "Desenvolvimento de temas e plugins personalizados para WordPress, criação de sites institucionais e e-commerces.",
     achievements: [
       "Criação de mais de 30 temas personalizados",
-      "Desenvolvimento de plugins para funcionalidades específicas",
       "Otimização de sites para performance e SEO",
       "Treinamento de equipe em WordPress",
     ],
@@ -72,18 +71,18 @@ const experiences = [
 // Formação acadêmica
 const education = [
   {
-    degree: "Análise e Desenvolvimento de Sistemas",
-    institution: "Faculdade de Tecnologia",
-    period: "2016 - 2018",
+    degree: "Programador Web, Tecnologia da Informação",
+    institution: "Senac RJ",
+    period: "2019 - 2019",
     description:
-      "Formação focada em desenvolvimento de software, banco de dados e engenharia de software.",
+      "Graduação profissional com 240 horas de duração, focada no desenvolvimento de sites e sistemas web. Durante o curso, adquiri conhecimentos sólidos em HTML5, CSS3, lógica de programação, JavaScript, frameworks modernos (React, Vite, NextJS, Tailwind), PHP, design responsivo e bancos de dados MySQL.",
   },
   {
     degree: "Certificações em Desenvolvimento Web",
-    institution: "Cursos Online e Bootcamps",
+    institution: "Alura e Cursos Online/Bootcamps",
     period: "2018 - Presente",
     description:
-      "Certificações em React, Node.js, TypeScript, Next.js e outras tecnologias modernas.",
+      "Formação continuada através da Alura e outras plataformas online, com atualização constante de certificações em React, Node.js, TypeScript, Next.js e tecnologias modernas. O foco do aprendizado está em frameworks, programação, boas práticas e acompanhamento das tendências atuais do desenvolvimento web.",
   },
 ];
 

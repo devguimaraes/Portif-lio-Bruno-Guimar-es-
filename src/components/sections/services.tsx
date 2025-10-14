@@ -14,7 +14,6 @@ import {
 import {
   Code2,
   Globe,
-  Smartphone,
   Database,
   Headphones,
   Rocket,
@@ -42,20 +41,6 @@ const services = [
   },
   {
     id: 2,
-    icon: Smartphone,
-    title: "Aplicativos Mobile",
-    description: "Apps nativos e híbridos para iOS e Android com React Native.",
-    features: [
-      "Interface nativa",
-      "Notificações push",
-      "Integração com APIs",
-      "Publicação nas lojas",
-      "Suporte multiplataforma",
-    ],
-    technologies: ["React Native", "Expo", "Firebase", "TypeScript"],
-  },
-  {
-    id: 3,
     icon: Database,
     title: "Sistemas Corporativos",
     description:
@@ -70,7 +55,7 @@ const services = [
     technologies: ["Node.js", "PostgreSQL", "Redis", "Docker"],
   },
   {
-    id: 4,
+    id: 3,
     icon: Code2,
     title: "WordPress Personalizado",
     description:
@@ -138,7 +123,7 @@ export function Services() {
         </motion.div>
 
         {/* Grid de serviços */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
