@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowDown, Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { TypingEffect } from "@/components/ui/typing-effect";
 import dynamic from "next/dynamic";
 import { PERSONAL_INFO } from "@/constants";
 
@@ -150,7 +151,7 @@ export function Hero() {
             </Badge>
           </motion.div>
 
-          {/* Título principal */}
+          {/* Título principal com efeito de digitação */}
           <motion.div
             className="mb-6"
             initial={{ opacity: 0 }}
@@ -158,11 +159,16 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-              <AnimatedText text="Olá, eu sou" className="block" />
-              <AnimatedText
-                text="Bruno Guimarães"
-                className="block text-accent"
-              />
+              <span className="block">
+                <TypingEffect 
+                  segments={[
+                    { text: "Olá, eu sou", className: "text-black dark:text-white" },
+                    { text: "Bruno Guimarães", className: "text-accent", isNewLine: true }
+                  ]}
+                  speed={150}
+                  startDelay={500}
+                />
+              </span>
             </h1>
           </motion.div>
 
