@@ -2,12 +2,14 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 
+// Interface para definir segmentos de texto com estilos específicos
 interface TextSegment {
   text: string;
   className?: string;
   isNewLine?: boolean;
 }
 
+// Props do componente TypingEffect
 interface TypingEffectProps {
   text?: string; // Para compatibilidade com versão anterior
   segments?: TextSegment[]; // Nova prop para segmentos com cores
@@ -18,9 +20,18 @@ interface TypingEffectProps {
   onComplete?: () => void;
 }
 
-// Componente de efeito de digitação com cursor piscante
-// Versão simplificada que digita o texto uma vez e mantém o cursor piscando
-// Suporta segmentos com cores diferentes e quebra de linha
+/**
+ * Componente de efeito de digitação com cursor piscante
+ * Simula digitação de texto caractere por caractere com animação de cursor
+ * Suporta segmentos com cores diferentes e quebras de linha
+ * @param text - Texto simples para compatibilidade (deprecated)
+ * @param segments - Array de segmentos com texto e estilos específicos
+ * @param speed - Velocidade da digitação em ms (padrão: 100ms)
+ * @param className - Classes CSS adicionais
+ * @param cursorChar - Caractere do cursor (padrão: "|")
+ * @param startDelay - Delay antes de iniciar a digitação em ms
+ * @param onComplete - Callback executado quando a digitação termina
+ */
 export function TypingEffect({
   text,
   segments,
@@ -30,10 +41,13 @@ export function TypingEffect({
   startDelay = 0,
   onComplete,
 }: TypingEffectProps) {
+  // Estados para controlar a digitação e exibição
   const [displaySegments, setDisplaySegments] = useState<TextSegment[]>([]);
   const [showCursor, setShowCursor] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  
+  // Refs para gerenciar intervalos e timeouts
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const cursorIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);

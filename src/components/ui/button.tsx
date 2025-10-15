@@ -4,6 +4,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+// Variantes do componente Button usando CVA (Class Variance Authority)
+// Define estilos base e variações para diferentes tipos e tamanhos
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
@@ -37,6 +39,16 @@ const buttonVariants = cva(
   },
 );
 
+/**
+ * Componente Button reutilizável baseado em Radix UI
+ * Suporta múltiplas variantes de estilo e tamanho
+ * Pode ser renderizado como elemento filho (asChild) usando Radix Slot
+ * @param className - Classes CSS adicionais
+ * @param variant - Variante visual do botão (default, destructive, outline, etc.)
+ * @param size - Tamanho do botão (default, sm, lg, icon, etc.)
+ * @param asChild - Se true, renderiza como elemento filho usando Slot
+ * @param props - Props nativas do elemento button
+ */
 function Button({
   className,
   variant,
@@ -47,6 +59,7 @@ function Button({
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
   }) {
+  // Usa Slot do Radix se asChild for true, senão usa button nativo
   const Comp = asChild ? Slot : "button";
 
   return (
