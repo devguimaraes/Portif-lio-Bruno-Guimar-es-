@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
+import { useBackgroundTypingSequence } from "@/hooks/use-animation-sequence";
 
 // Interface para definir segmentos de texto com estilos específicos
 interface TextSegment {
@@ -18,6 +19,9 @@ interface TypingEffectProps {
   cursorChar?: string;
   startDelay?: number;
   onComplete?: () => void;
+  waitForBackground?: boolean; // Nova prop para aguardar background
+  onBackgroundReady?: () => void; // Callback quando background estiver pronto
+  backgroundReadyDelay?: number; // Tempo para aguardar background (padrão: 1500ms)
 }
 
 /**
@@ -40,6 +44,9 @@ export function TypingEffect({
   cursorChar = "|",
   startDelay = 0,
   onComplete,
+  waitForBackground = false,
+  onBackgroundReady,
+  backgroundReadyDelay = 1500,
 }: TypingEffectProps) {
   // Estados para controlar a digitação e exibição
   const [displaySegments, setDisplaySegments] = useState<TextSegment[]>([]);
@@ -52,6 +59,19 @@ export function TypingEffect({
   const cursorIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const componentId = React.useId();
+
+  // Hook para coordenar sequência de animações (se waitForBackground estiver ativo)
+  const backgroundSequence = useBackgroundTypingSequence({
+    backgroundPreloadTime: backgroundReadyDelay,
+    typingStartDelay: startDelay,
+    onBackgroundReady,
+    onTypingStart: () => {
+      // Inicia digitação quando background estiver pronto
+      if (waitForBackground) {
+        startTypingProcess();
+      }
+    },
+  });
 
   // Processa os segmentos de texto (nova funcionalidade ou compatibilidade com versão anterior)
   const processedSegments = React.useMemo(() => {
@@ -171,18 +191,26 @@ export function TypingEffect({
       return;
     }
 
-    // Aplica o delay inicial antes de começar a digitação
+    // Se waitForBackground está ativo, a digitação será controlada pelo hook
+    if (waitForBackground) {
+      // O hook backgroundSequence já está gerenciando a sequência
+      return;
+    }
+
+    // Comportamento padrão: aplica o delay inicial antes de começar a digitação
     timeoutRef.current = setTimeout(startTypingProcess, startDelay);
 
     // Cleanup na desmontagem do componente
     return cleanupTimers;
-  }, [processedSegments, startDelay, prefersReducedMotion, cleanupTimers, startTypingProcess, onComplete]);
+  }, [processedSegments, startDelay, prefersReducedMotion, cleanupTimers, startTypingProcess, onComplete, waitForBackground]);
 
   return (
     <span
       className={`typing-effect ${className}`}
       data-typing-complete={isComplete}
       data-typing-active={isTyping}
+      data-background-ready={waitForBackground ? backgroundSequence.isBackgroundReady : true}
+      data-can-start-typing={waitForBackground ? backgroundSequence.canStartTyping : true}
       aria-live={isTyping ? "polite" : "off"}
       aria-label={prefersReducedMotion ? processedSegments.map(s => s.text).join('') : `${isTyping ? 'Digitando' : 'Texto completo'}: ${displaySegments.map(s => s.text).join('')}`}
       id={componentId}
