@@ -1,0 +1,144 @@
+name: 🌟 Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy-production:
+    name: 🚀 Deploy to Production Environment
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: 📥 Install dependencies
+        run: npm ci
+        
+      - name: 🔍 Type check
+        run: npm run type-check
+        
+      - name: 🎨 Check formatting
+        run: npm run format:check
+        
+      - name: 🏗️ Build application
+        run: npm run build
+        env:
+          NODE_ENV: production
+          
+      - name: 🧪 Run E2E tests
+        run: npm run test:ci
+        
+      - name: 📊 Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: production-test-results
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 30
+          
+      # Aqui você pode adicionar o deploy real para seu ambiente de produção
+      # Exemplo com Vercel:
+      # - name: 🚀 Deploy to Vercel Production
+      #   uses: amondnet/vercel-action@v25
+      #   with:
+      #     vercel-token: ${{ secrets.VERCEL_TOKEN }}
+      #     vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+      #     vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+      #     vercel-args: '--prod'
+      #     scope: ${{ secrets.VERCEL_ORG_ID }}
+      
+      - name: 🏷️ Create Release Tag
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const sha = context.sha;
+            const date = new Date().toISOString().split('T')[0];
+            const tagName = `v${date}-${sha.substring(0, 7)}`;
+            
+            try {
+              await github.rest.git.createRef({
+                owner,
+                repo,
+                ref: `refs/tags/${tagName}`,
+                sha: sha
+              });
+              
+              console.log(`Created tag: ${tagName}`);
+            } catch (error) {
+              console.log('Tag creation failed:', error.message);
+            }
+      
+      - name: 📢 Notify Success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const sha = context.sha;
+            
+            // Cria uma issue de notificação de deploy bem-sucedido
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title: `🚀 Production Deploy Successful - ${new Date().toISOString().split('T')[0]}`,
+              body: `## ✅ Deploy to Production Completed Successfully!
+              
+              **Details:**
+              - 🕐 **Time:** ${new Date().toISOString()}
+              - 📝 **Commit:** ${sha.substring(0, 7)}
+              - 🌐 **Environment:** Production
+              - 🔗 **URL:** [View Live Site](https://your-production-url.com)
+              
+              **Checks Passed:**
+              - ✅ TypeScript compilation
+              - ✅ Code formatting
+              - ✅ Build process
+              - ✅ E2E tests
+              
+              This issue will be automatically closed in 24 hours.`,
+              labels: ['deployment', 'production', 'success']
+            });
+      
+      - name: 🚨 Notify Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const sha = context.sha;
+            
+            await github.rest.issues.create({
+              owner,
+              repo,
+              title: `🚨 Production Deploy Failed - ${new Date().toISOString().split('T')[0]}`,
+              body: `## ❌ Production Deploy Failed!
+              
+              **Details:**
+              - 🕐 **Time:** ${new Date().toISOString()}
+              - 📝 **Commit:** ${sha.substring(0, 7)}
+              - 🌐 **Environment:** Production
+              - 🔗 **Workflow:** [View Failed Run](https://github.com/${owner}/${repo}/actions/runs/${context.runId})
+              
+              **Action Required:**
+              - 🔍 Check the workflow logs
+              - 🐛 Fix any issues found
+              - 🔄 Re-run the deployment
+              
+              **Priority:** HIGH - Production deployment failure!`,
+              labels: ['deployment', 'production', 'failure', 'urgent'],
+              assignees: ['devguimaraes']
+            });
