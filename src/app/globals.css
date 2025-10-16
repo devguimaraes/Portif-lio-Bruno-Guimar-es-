@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 
+/* Importa estilos de animação customizados */
+@import "../styles/animations.css";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

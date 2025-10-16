@@ -166,7 +166,11 @@ export function Hero() {
                     { text: "Bruno Guimarães", className: "text-accent", isNewLine: true }
                   ]}
                   speed={150}
-                  startDelay={500}
+                  waitForBackground={true}
+                  backgroundReadyDelay={2000}
+                  onBackgroundReady={() => {
+                    console.log("🎨 Background animations carregadas e prontas!");
+                  }}
                 />
               </span>
             </h1>
