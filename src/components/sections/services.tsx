@@ -142,12 +142,12 @@ export function Services() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <h5 className="font-semibold mb-2 text-sm">Inclui:</h5>
+                    <h5 className="font-semibold mb-2 text-base">Inclui:</h5>
                     <ul className="space-y-1">
                       {service.features.map((feature, i) => (
                         <li
                           key={`${componentId}-feature-${service.id}-${i}`}
-                          className="flex items-center gap-2 text-sm text-muted-foreground"
+                          className="flex items-center gap-2 text-base text-muted-foreground"
                         >
                           <Check className="h-3 w-3 text-green-500" />
                           {feature}
@@ -157,7 +157,7 @@ export function Services() {
                   </div>
 
                   <div>
-                    <h5 className="font-semibold mb-2 text-sm">Tecnologias:</h5>
+                    <h5 className="font-semibold mb-2 text-base">Tecnologias:</h5>
                     <div className="flex flex-wrap gap-1">
                       {service.technologies.map((tech) => (
                         <Badge
@@ -211,7 +211,7 @@ export function Services() {
                   </div>
                 </div>
                 <h4 className="font-semibold mb-2">{process.title}</h4>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-lg text-muted-foreground">
                   {process.description}
                 </p>
               </motion.div>

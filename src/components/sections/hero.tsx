@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { TypingEffect } from "@/components/ui/typing-effect";
 import dynamic from "next/dynamic";
 import { PERSONAL_INFO } from "@/constants";
+import Image from "next/image";
 
 // Carregar animações apenas no cliente para evitar SSR/hidratação instável
 const AsciiAnimation = dynamic(

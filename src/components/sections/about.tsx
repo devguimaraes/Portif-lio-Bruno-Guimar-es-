@@ -215,7 +215,7 @@ export function About() {
                           <skill.icon className="h-4 w-4" />
                           <span className="font-medium">{skill.name}</span>
                         </div>
-                        <span className="text-sm text-muted-foreground">
+                        <span className="text-base text-muted-foreground">
                           {skill.level}%
                         </span>
                       </div>
@@ -255,7 +255,7 @@ export function About() {
                         <CardTitle className="text-lg">{exp.title}</CardTitle>
                         <CardDescription className="flex flex-col gap-1 mt-1">
                           <span className="font-medium">{exp.company}</span>
-                          <div className="flex items-center gap-3 text-xs">
+                          <div className="flex items-center gap-3 text-base">
                             <span className="flex items-center gap-1">
                               <Calendar className="h-3 w-3" />
                               {exp.period}
@@ -270,14 +270,14 @@ export function About() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground mb-4 text-sm">
+                    <p className="text-muted-foreground mb-4 text-base">
                       {exp.description}
                     </p>
                     <div>
-                      <h5 className="font-semibold mb-2 text-sm">
+                      <h5 className="font-semibold mb-2 text-base">
                         Principais conquistas:
                       </h5>
-                      <ul className="list-disc list-inside space-y-1 text-xs text-muted-foreground">
+                      <ul className="list-disc list-inside space-y-1 text-base text-muted-foreground">
                         {exp.achievements.map((achievement, i) => (
                           <li
                             key={`${componentId}-achievement-${exp.title}-${i}`}
@@ -326,7 +326,7 @@ export function About() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground text-sm">
+                    <p className="text-muted-foreground text-base">
                       {edu.description}
                     </p>
                   </CardContent>

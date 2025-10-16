@@ -216,7 +216,7 @@ export function ContactInfo() {
 
                 {/* Informações de disponibilidade */}
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center justify-between text-base">
                     <span className="text-muted-foreground">
                       Novos projetos:
                     </span>
@@ -224,13 +224,13 @@ export function ContactInfo() {
                       Aceitando
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center justify-between text-base">
                     <span className="text-muted-foreground">
                       Tempo de resposta:
                     </span>
                     <span className="font-medium">2-4 horas</span>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center justify-between text-base">
                     <span className="text-muted-foreground">Próxima vaga:</span>
                     <span className="font-medium">{getNextAvailableMonth()}</span>
                   </div>

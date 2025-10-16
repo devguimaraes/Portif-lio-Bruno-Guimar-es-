@@ -168,7 +168,7 @@ export function Projects() {
                   <div className="flex items-start justify-between">
                     <div>
                       <CardTitle className="text-lg">{project.title}</CardTitle>
-                      <CardDescription className="text-sm text-muted-foreground">
+                      <CardDescription className="text-base text-muted-foreground">
                         {project.year}
                       </CardDescription>
                     </div>
@@ -176,19 +176,19 @@ export function Projects() {
                 </CardHeader>
 
                 <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground line-clamp-3">
+                  <p className="text-base text-muted-foreground line-clamp-3">
                     {project.description}
                   </p>
 
                   {/* Tecnologias */}
                   <div>
-                    <h5 className="text-sm font-semibold mb-2">Tecnologias:</h5>
+                    <h5 className="text-base font-semibold mb-2">Tecnologias:</h5>
                     <div className="flex flex-wrap gap-1">
                       {project.technologies.map((tech) => (
                         <Badge
                           key={tech}
                           variant="secondary"
-                          className="text-xs"
+                          className="text-base"
                         >
                           {tech}
                         </Badge>
@@ -198,10 +198,10 @@ export function Projects() {
 
                   {/* Features principais */}
                   <div>
-                    <h5 className="text-sm font-semibold mb-2">
+                    <h5 className="text-base font-semibold mb-2">
                       Principais features:
                     </h5>
-                    <ul className="text-xs text-muted-foreground space-y-1">
+                    <ul className="text-sm text-muted-foreground space-y-1">
                       {project.features.slice(0, 3).map((feature, i) => (
                         <li
                           key={`${componentId}-feature-${project.id}-${i}`}

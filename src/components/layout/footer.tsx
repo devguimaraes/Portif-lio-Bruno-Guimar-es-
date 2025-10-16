@@ -4,9 +4,43 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { NAVIGATION_ITEMS } from "@/constants";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+
+// Hook para controle do tema (mesmo padrão do header)
+function useTheme() {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // Marca como montado para evitar hidratação
+    setMounted(true);
+
+    // Verifica preferência salva ou do sistema
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    const initialTheme = savedTheme || systemTheme;
+
+    setTheme(initialTheme);
+  }, []);
+
+  return { theme, mounted };
+}
+
+// Links de navegação do rodapé (usando âncoras como no header)
+const FOOTER_NAVIGATION_ITEMS = [
+  { href: "#about", label: "Sobre" },
+  { href: "#projects", label: "Projetos" },
+  { href: "#services", label: "Serviços" },
+  { href: "#contact", label: "Contato" },
+] as const;
 
 export function Footer() {
+  const { theme, mounted } = useTheme();
+
   return (
     <footer className="bg-background border-t">
       <div className="container mx-auto px-4 py-12">
@@ -19,7 +53,24 @@ export function Footer() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-xl font-bold mb-4">Bruno Guimarães</h3>
+              {/* Logo acima do nome */}
+              {mounted && (
+                <div className="flex justify-center lg:justify-start mb-3">
+                  <Image
+                    src={
+                      theme === "dark"
+                        ? "/projects/LogoBruno.png"
+                        : "/projects/LogoBrunopreta.png"
+                    }
+                    alt="Logo Bruno Guimarães"
+                    width={80}
+                    height={80}
+                    className="object-contain rounded-lg"
+                  />
+                </div>
+              )}
+              
+              <h3 className="text-xl font-bold mb-4 text-center lg:text-left">Bruno Guimarães</h3>
               <p className="text-muted-foreground mb-6 max-w-md">
                 Desenvolvedor Full Stack especializado em React, Next.js,
                 Node.js e WordPress. Criando soluções digitais inovadoras para
@@ -67,7 +118,7 @@ export function Footer() {
             >
               <h4 className="font-semibold mb-4">Navegação</h4>
               <ul className="space-y-2">
-                {NAVIGATION_ITEMS.map((item) => (
+                {FOOTER_NAVIGATION_ITEMS.map((item) => (
                   <li key={item.href}>
                     <a
                       href={item.href}
@@ -91,15 +142,15 @@ export function Footer() {
             >
               <h4 className="font-semibold mb-4">Contato</h4>
               <div className="space-y-3">
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                <div className="flex items-center space-x-2 text-base text-muted-foreground">
                   <Phone className="h-4 w-4" />
                   <span>(21) 96971-5247</span>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                <div className="flex items-center space-x-2 text-base text-muted-foreground">
                   <Mail className="h-4 w-4" />
                   <span>devgmrs@gmail.com</span>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                <div className="flex items-center space-x-2 text-base text-muted-foreground">
                   <MapPin className="h-4 w-4" />
                   <span>Rio de Janeiro, RJ</span>
                 </div>
@@ -116,7 +167,7 @@ export function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-center text-sm text-muted-foreground"
+          className="text-center text-base text-muted-foreground"
         >
           <p>
             © {new Date().getFullYear()} Bruno Guimarães. Todos os direitos

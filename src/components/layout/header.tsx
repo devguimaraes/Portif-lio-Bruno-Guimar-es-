@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Hook para controle do tema
 function useTheme() {
@@ -148,8 +149,29 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <Link href="/" className="text-xl font-bold text-foreground">
-              Bruno<span className="text-accent">.</span>
+            <Link href="/" className="flex items-center">
+              {mounted && (
+                <motion.div
+                  key={theme} // Força re-render quando o tema muda
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="relative w-12 h-12"
+                >
+                  <Image
+                    src={theme === "dark" ? "/projects/LogoBruno.png" : "/projects/LogoBrunopreta.png"}
+                    alt="Bruno Guimarães - Logo"
+                    width={48}
+                    height={48}
+                    className="object-contain transition-all duration-300"
+                    priority
+                  />
+                </motion.div>
+              )}
+              {!mounted && (
+                <div className="w-12 h-12 bg-muted rounded animate-pulse" />
+              )}
             </Link>
           </motion.div>
 
