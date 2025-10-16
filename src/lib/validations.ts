@@ -5,35 +5,25 @@ import { z } from 'zod'
  * Valida nome, email, assunto e mensagem com regras específicas
  */
 export const contactFormSchema = z.object({
-  name: z
-    .string()
-    .min(2, 'Nome deve ter pelo menos 2 caracteres')
-    .max(100, 'Nome deve ter no máximo 100 caracteres')
-    .regex(/^[a-zA-ZÀ-ÿ\s]+$/, 'Nome deve conter apenas letras e espaços'),
-  
-  email: z
-    .string()
-    .email('Email deve ter um formato válido')
-    .max(255, 'Email deve ter no máximo 255 caracteres'),
-  
-  subject: z
-    .string()
-    .min(5, 'Assunto deve ter pelo menos 5 caracteres')
-    .max(200, 'Assunto deve ter no máximo 200 caracteres'),
-  
-  message: z
-    .string()
-    .min(10, 'Mensagem deve ter pelo menos 10 caracteres')
-    .max(1000, 'Mensagem deve ter no máximo 1000 caracteres'),
-  
+  name: z.string().min(2, "Nome deve ter pelo menos 2 caracteres"),
+  email: z.string().email("Email inválido"),
+  subject: z.string().min(5, "Assunto deve ter pelo menos 5 caracteres"),
+  message: z.string().min(10, "Mensagem deve ter pelo menos 10 caracteres"),
   phone: z
     .string()
     .optional()
-    .refine((phone) => {
-      if (!phone) return true
-      // Valida formato brasileiro: (11) 99999-9999 ou 11999999999
-      return /^(\(\d{2}\)\s?\d{4,5}-?\d{4}|\d{10,11})$/.test(phone)
-    }, 'Telefone deve ter formato válido: (11) 99999-9999'),
+    .refine(
+      (phone) => {
+        if (!phone) return true; // Campo opcional
+        // Remove todos os caracteres não numéricos
+        const cleanPhone = phone.replace(/\D/g, "");
+        // Verifica se tem 10 ou 11 dígitos (formato brasileiro)
+        return cleanPhone.length === 10 || cleanPhone.length === 11;
+      },
+      {
+        message: "Telefone deve ter formato válido (10 ou 11 dígitos)",
+      }
+    ),
 })
 
 /**

@@ -1,3 +1,19 @@
+/**
+ * Componente de Contato - Implementação da Issue #1
+ * 
+ * Funcionalidades implementadas:
+ * - Formulário de contato com validação Zod
+ * - Integração com API route para envio de emails
+ * - Campos: nome, email, assunto, mensagem
+ * - Feedback visual de sucesso/erro
+ * - Informações de contato e redes sociais
+ * 
+ * Configuração necessária:
+ * - API route: /api/contact
+ * - Variáveis de ambiente para email (ver .env.local)
+ * - Autenticação Gmail com senha de app
+ */
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -80,6 +96,7 @@ export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    subject: "",
     phone: "",
     project: "",
     budget: "",
@@ -87,6 +104,7 @@ export function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleInputChange = (
     e: React.ChangeEvent<
@@ -100,25 +118,55 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError("");
 
-    // Simula envio do formulário
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      // Prepara dados para envio conforme schema de validação
+      const contactData = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject || `${formData.project} - Orçamento`,
+        message: `${formData.message}\n\nDetalhes adicionais:\n- Tipo de projeto: ${formData.project}\n- Orçamento estimado: ${formData.budget}\n- Telefone: ${formData.phone || 'Não informado'}`,
+        phone: formData.phone,
+      };
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        project: "",
-        budget: "",
-        message: "",
+      // Envia para a API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(contactData),
       });
-    }, 3000);
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Erro ao enviar mensagem');
+      }
+
+      setIsSubmitted(true);
+
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          phone: "",
+          project: "",
+          budget: "",
+          message: "",
+        });
+      }, 5000);
+
+    } catch (error) {
+      console.error('Erro ao enviar formulário:', error);
+      setSubmitError(error instanceof Error ? error.message : 'Erro ao enviar mensagem');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -205,6 +253,18 @@ export function Contact() {
                       </div>
                     </div>
 
+                    <div className="space-y-2">
+                      <Label htmlFor="subject">Assunto *</Label>
+                      <Input
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        placeholder="Assunto da sua mensagem"
+                        required
+                      />
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="phone">WhatsApp</Label>
@@ -267,6 +327,12 @@ export function Contact() {
                         required
                       />
                     </div>
+
+                    {submitError && (
+                      <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+                        <p className="text-red-600 text-sm">{submitError}</p>
+                      </div>
+                    )}
 
                     <Button
                       type="submit"

@@ -127,6 +127,44 @@ Este portfólio foi desenvolvido para apresentar de forma profissional e interat
    
    Acesse [http://localhost:3000](http://localhost:3000) para ver o resultado.
 
+## 📧 Configuração do Formulário de Contato
+
+O formulário de contato está configurado para enviar emails reais através do Gmail. Para configurar:
+
+### 🔐 Configuração do Gmail
+
+1. **Ative a autenticação de dois fatores** no seu Gmail
+2. **Gere uma senha de app**:
+   - Acesse [myaccount.google.com](https://myaccount.google.com)
+   - Vá em "Segurança" → "Senhas de app"
+   - Crie uma nova senha para "Aplicativo personalizado"
+
+### ⚙️ Variáveis de Ambiente
+
+Crie um arquivo `.env.local` na raiz do projeto:
+
+```env
+# Configurações de Email (Nodemailer)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USER=seu-email@gmail.com
+EMAIL_PASS=sua-senha-de-app-16-caracteres
+EMAIL_FROM=seu-email@gmail.com
+EMAIL_TO=email-destinatario@gmail.com
+
+# Next.js
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_secret_here
+```
+
+### 📋 Funcionalidades do Formulário
+
+- ✅ Validação com Zod schema
+- ✅ Envio de email para o destinatário
+- ✅ Email de confirmação para o remetente
+- ✅ Feedback visual de sucesso/erro
+- ✅ Campos: nome, email, assunto, mensagem
+
 ### 🔄 Desenvolvimento
 
 - O projeto utiliza **Turbopack** para compilação ultra-rápida
