@@ -21,30 +21,34 @@ import {
   Zap,
 } from "lucide-react";
 import { PROJECTS } from "@/constants/projects";
+import { useTranslations } from "next-intl";
 
 // Dados dos projetos
 const projects = PROJECTS;
 
-// Categorias de filtro
-const categories = [
-  { id: "all", label: "Todos", icon: Code2 },
-  { id: "web", label: "Web Apps", icon: Globe },
-  { id: "react", label: "React", icon: Code2 },
-  { id: "wordpress", label: "WordPress", icon: Building2 },
-];
-
-// Status dos projetos
-const statusConfig = {
-  completed: { label: "Concluído", color: "bg-green-500" },
-  "in-progress": { label: "Em Desenvolvimento", color: "bg-yellow-500" },
-};
-
 export function Projects() {
+  // Hook de tradução
+  const t = useTranslations('projects');
+  
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   // Gera ID único para este componente
   const componentId = React.useId();
+
+  // Categorias de filtro traduzidas
+  const categories = [
+    { id: "all", label: t('categories.all'), icon: Code2 },
+    { id: "web", label: t('categories.web'), icon: Globe },
+    { id: "react", label: t('categories.react'), icon: Code2 },
+    { id: "wordpress", label: t('categories.wordpress'), icon: Building2 },
+  ];
+
+  // Status dos projetos traduzidos
+  const statusConfig = {
+    completed: { label: t('status.completed'), color: "bg-green-500" },
+    "in-progress": { label: t('status.in-progress'), color: "bg-yellow-500" },
+  };
 
   // Filtrar projetos por categoria
   const filteredProjects =
@@ -63,11 +67,9 @@ export function Projects() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Meus Projetos</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Uma seleção dos meus trabalhos mais recentes, incluindo aplicações
-            web, mobile e soluções corporativas desenvolvidas com as mais
-            modernas tecnologias.
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -120,7 +122,7 @@ export function Projects() {
                       <div className="text-center">
                         <Code2 className="h-12 w-12 mx-auto mb-2 text-muted-foreground" />
                         <p className="text-sm text-muted-foreground">
-                          Preview do Projeto
+                          {t('labels.projectPreview')}
                         </p>
                       </div>
                     </div>
@@ -157,7 +159,7 @@ export function Projects() {
                           className="flex items-center gap-2"
                         >
                           <ExternalLink className="h-4 w-4" />
-                          Ver Projeto
+                          {t('labels.viewProject')}
                         </a>
                       </Button>
                     )}
@@ -182,7 +184,7 @@ export function Projects() {
 
                   {/* Tecnologias */}
                   <div>
-                    <h5 className="text-base font-semibold mb-2">Tecnologias:</h5>
+                    <h5 className="text-base font-semibold mb-2">{t('labels.technologies')}</h5>
                     <div className="flex flex-wrap gap-1">
                       {project.technologies.map((tech) => (
                         <Badge
@@ -199,7 +201,7 @@ export function Projects() {
                   {/* Features principais */}
                   <div>
                     <h5 className="text-base font-semibold mb-2">
-                      Principais features:
+                      {t('labels.features')}
                     </h5>
                     <ul className="text-sm text-muted-foreground space-y-1">
                       {project.features.slice(0, 3).map((feature, i) => (
@@ -224,7 +226,7 @@ export function Projects() {
                           rel="noopener noreferrer"
                         >
                           <ExternalLink className="h-3 w-3 mr-1" />
-                          Ver Projeto
+                          {t('labels.viewProject')}
                         </a>
                       </Button>
                     )}

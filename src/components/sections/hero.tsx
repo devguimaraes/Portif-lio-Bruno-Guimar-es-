@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TypingEffect } from "@/components/ui/typing-effect";
 import dynamic from "next/dynamic";
-import { PERSONAL_INFO } from "@/constants";
 import Image from "next/image";
+import { useTranslations } from 'next-intl';
 
 // Carregar animações apenas no cliente para evitar SSR/hidratação instável
 const AsciiAnimation = dynamic(
@@ -87,68 +87,37 @@ function AnimatedText({
   );
 }
 
+// Componente Hero refatorado para usar traduções
 export function Hero() {
+  const t = useTranslations('hero');
+  
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background com gradiente sutil */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/20" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-muted/20">
+      {/* Animações de fundo */}
+      <div className="absolute inset-0 z-0">
+        <MatrixRain />
+        <MatrixGlitch />
+        <MatrixPulse />
+        <AsciiAnimation />
+        <AsciiCodeBlock />
+        <AsciiParticles />
+      </div>
 
-      {/* Animações ASCII de Background */}
-      <AsciiAnimation density={12} />
-      <AsciiCodeBlock position="top-right" />
-      <AsciiCodeBlock position="bottom-left" />
-      <AsciiParticles />
-
-      {/* Animações Matrix de Background */}
-      <MatrixRain density={20} />
-      <MatrixGlitch />
-      <MatrixPulse />
-
-      {/* Chuva sutil de ícones de tecnologias - TEMPORARIAMENTE REMOVIDO */}
-      {/* <TechIconsRain density={6} /> */}
-
-      {/* Elementos decorativos */}
-      <motion.div
-        className="absolute top-20 right-20 w-32 h-32 bg-accent/5 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      <motion.div
-        className="absolute bottom-20 left-20 w-24 h-24 bg-primary/5 rounded-full blur-2xl"
-        animate={{
-          scale: [1.2, 1, 1.2],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Conteúdo principal */}
+      <div className="relative z-10 container mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto">
           {/* Badge de disponibilidade */}
           <motion.div
             className="mb-8"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5 }}
           >
             <Badge
               variant="secondary"
-              className="px-4 py-2 text-sm font-medium bg-accent/10 text-accent border-accent/20"
+              className="px-4 py-2 text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400 border-green-200 dark:border-green-800"
             >
-              🟢 Disponível para novos projetos
+              🟢 {t('availability')}
             </Badge>
           </motion.div>
 
@@ -163,8 +132,8 @@ export function Hero() {
               <span className="block">
                 <TypingEffect 
                   segments={[
-                    { text: "Olá, eu sou", className: "text-black dark:text-white" },
-                    { text: "Bruno Guimarães", className: "text-accent", isNewLine: true }
+                    { text: t('greeting'), className: "text-black dark:text-white" },
+                    { text: t('name'), className: "text-accent", isNewLine: true }
                   ]}
                   speed={150}
                   waitForBackground={true}
@@ -183,7 +152,7 @@ export function Hero() {
             {...fadeInUp}
             transition={{ delay: 0.6 }}
           >
-            {PERSONAL_INFO.title}
+            {t('title')}
           </motion.h2>
 
           {/* Descrição */}
@@ -192,9 +161,7 @@ export function Hero() {
             {...fadeInUp}
             transition={{ delay: 0.7 }}
           >
-            Desenvolvo sites e aplicações web que não apenas funcionam
-            perfeitamente, mas que aparecem no Google e geram clientes reais
-            para seu negócio
+            {t('subtitle')}
           </motion.p>
 
           {/* Botões de ação */}
@@ -210,7 +177,7 @@ export function Hero() {
             >
               <a href="#contato">
                 <Mail className="mr-2 h-5 w-5" />
-                Vamos conversar
+                {t('cta')}
               </a>
             </Button>
 
@@ -222,7 +189,7 @@ export function Hero() {
             >
               <a href="/cv.pdf" download>
                 <Download className="mr-2 h-5 w-5" />
-                Download CV
+                {t('downloadCv')}
               </a>
             </Button>
           </motion.div>

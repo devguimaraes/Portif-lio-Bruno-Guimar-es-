@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 // Hook para controle do tema (mesmo padrão do header)
 function useTheme() {
@@ -30,16 +31,17 @@ function useTheme() {
   return { theme, mounted };
 }
 
-// Links de navegação do rodapé (usando âncoras como no header)
-const FOOTER_NAVIGATION_ITEMS = [
-  { href: "#about", label: "Sobre" },
-  { href: "#projects", label: "Projetos" },
-  { href: "#services", label: "Serviços" },
-  { href: "#contact", label: "Contato" },
-] as const;
-
 export function Footer() {
   const { theme, mounted } = useTheme();
+  const t = useTranslations();
+
+  // Links de navegação do rodapé usando traduções
+  const FOOTER_NAVIGATION_ITEMS = [
+    { href: "#about", label: t('footer.navigation.about') },
+    { href: "#projects", label: t('footer.navigation.projects') },
+    { href: "#services", label: t('footer.navigation.services') },
+    { href: "#contact", label: t('footer.navigation.contact') },
+  ] as const;
 
   return (
     <footer className="bg-background border-t">
@@ -72,9 +74,7 @@ export function Footer() {
               
               <h3 className="text-xl font-bold mb-4 text-center lg:text-left">Bruno Guimarães</h3>
               <p className="text-muted-foreground mb-6 max-w-md">
-                Desenvolvedor Full Stack especializado em React, Next.js,
-                Node.js e WordPress. Criando soluções digitais inovadoras para
-                empresas e startups.
+                {t('footer.description')}
               </p>
 
               {/* Links sociais */}
@@ -116,7 +116,7 @@ export function Footer() {
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <h4 className="font-semibold mb-4">Navegação</h4>
+              <h4 className="font-semibold mb-4">{t('footer.navigation.title')}</h4>
               <ul className="space-y-2">
                 {FOOTER_NAVIGATION_ITEMS.map((item) => (
                   <li key={item.href}>
@@ -140,7 +140,7 @@ export function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h4 className="font-semibold mb-4">Contato</h4>
+              <h4 className="font-semibold mb-4">{t('footer.contact.title')}</h4>
               <div className="space-y-3">
                 <div className="flex items-center space-x-2 text-base text-muted-foreground">
                   <Phone className="h-4 w-4" />
@@ -170,8 +170,7 @@ export function Footer() {
           className="text-center text-base text-muted-foreground"
         >
           <p>
-            © {new Date().getFullYear()} Bruno Guimarães. Todos os direitos
-            reservados.
+            {t('footer.copyright', { year: new Date().getFullYear() })}
           </p>
         </motion.div>
       </div>

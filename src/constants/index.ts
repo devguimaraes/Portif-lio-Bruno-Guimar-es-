@@ -1,32 +1,40 @@
 // Constantes do portfólio Bruno Guimarães
+import { useTranslations } from "next-intl";
 
-export const PERSONAL_INFO = {
-  name: "Bruno Guimarães",
-  title: "Desenvolvedor Frontend & Especialista em SEO Local",
-  description:
-    "Desenvolvo sites e aplicações web que não apenas funcionam perfeitamente, mas que aparecem no Google e geram clientes reais para seu negócio",
-  contact: {
-    email: "devgmrs@gmail.com",
-    phone: "(21) 96971-5247",
-    location: "Rio de Janeiro, RJ",
-  },
-  social: {
-    github: "https://github.com/devguimaraes",
-    linkedin: "https://www.linkedin.com/in/bcguimaraes/",
-    instagram: "https://www.instagram.com/brunoguimraes/",
-  },
-  experience: "5+ anos em Desenvolvimento Web | 3+ anos em SEO Local",
-} as const;
+// Função para obter informações pessoais traduzidas
+export function getPersonalInfo(t: ReturnType<typeof useTranslations>) {
+  return {
+    name: "Bruno Guimarães",
+    title: t('constants.personalInfo.title'),
+    description: t('constants.personalInfo.description'),
+    contact: {
+      email: "devgmrs@gmail.com",
+      phone: "(21) 96971-5247",
+      location: "Rio de Janeiro, RJ",
+    },
+    social: {
+      github: "https://github.com/devguimaraes",
+      linkedin: "https://www.linkedin.com/in/bcguimaraes/",
+      instagram: "https://www.instagram.com/brunoguimraes/",
+    },
+    experience: t('constants.personalInfo.experience'),
+  } as const;
+}
 
-export const UVP =
-  "Desenvolvo sites e aplicações web que não apenas funcionam perfeitamente, mas que aparecem no Google e geram clientes reais para seu negócio";
+// Função para obter UVP traduzido
+export function getUVP(t: ReturnType<typeof useTranslations>) {
+  return t('constants.uvp');
+}
 
-export const METRICS = {
-  projectsCompleted: "50+",
-  averageROI: "200%",
-  satisfactionRate: "98%",
-  averageLighthouse: "87/100",
-} as const;
+// Função para obter métricas traduzidas
+export function getMetrics(t: ReturnType<typeof useTranslations>) {
+  return {
+    projectsCompleted: t('constants.metrics.projectsCompleted'),
+    averageROI: t('constants.metrics.averageROI'),
+    satisfactionRate: t('constants.metrics.satisfactionRate'),
+    averageLighthouse: t('constants.metrics.averageLighthouse'),
+  } as const;
+}
 
 export const NAVIGATION_ITEMS = [
   { href: "/", label: "Home" },
@@ -36,57 +44,20 @@ export const NAVIGATION_ITEMS = [
   { href: "/contato", label: "Contato" },
 ] as const;
 
-export const TECH_STACK = {
-  frontend: [
-    "HTML5",
-    "CSS3",
-    "JavaScript ES6+",
-    "TypeScript",
-    "React.js",
-    "Vue.js",
-    "Next.js",
-    "Tailwind CSS",
-    "Bootstrap",
-    "SASS",
-    "Styled-Components",
-  ],
-  wordpress: ["WordPress 6.4+", "Elementor Pro", "Elementor Free", "Gutenberg"],
-  backend: [
-    "Python",
-    "PHP",
-    "TypeScript",
-    "Django",
-    "Django REST Framework",
-    "Flask",
-    "Laravel",
-  ],
-  databases: ["MySQL", "PostgreSQL", "MongoDB", "Supabase"],
-  marketing: [
-    "SEO On-page",
-    "SEO Técnico",
-    "Google Analytics 4",
-    "Google Search Console",
-    "Google Tag Manager",
-    "Google Ads",
-  ],
-  hosting: ["Vercel", "Netlify", "DigitalOcean", "Hostgator", "Hostinger"],
-  tools: [
-    "Git",
-    "npm/yarn",
-    "Vite",
-    "Webpack",
-    "Claude Code",
-    "GitHub Copilot",
-    "ChatGPT",
-  ],
-} as const;
+// Função para obter tech stack traduzido
+export function getTechStack(t: ReturnType<typeof useTranslations>) {
+  return {
+    frontend: t.raw('constants.techStack.frontend') as string[],
+    wordpress: t.raw('constants.techStack.wordpress') as string[],
+    backend: t.raw('constants.techStack.backend') as string[],
+    databases: t.raw('constants.techStack.databases') as string[],
+    marketing: t.raw('constants.techStack.marketing') as string[],
+    hosting: t.raw('constants.techStack.hosting') as string[],
+    tools: t.raw('constants.techStack.tools') as string[],
+  } as const;
+}
 
-export const SECTORS = [
-  "Saúde",
-  "Advocacia",
-  "Marketing",
-  "Educação",
-  "Alimentação",
-  "Engenharia",
-  "Sustentabilidade",
-] as const;
+// Função para obter setores traduzidos
+export function getSectors(t: ReturnType<typeof useTranslations>) {
+  return t.raw('constants.sectors') as string[];
+}

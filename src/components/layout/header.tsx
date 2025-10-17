@@ -7,6 +7,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { LanguageSwitcher } from "@/components/ui/language-switcher";
+import { useTranslations } from 'next-intl';
 
 // Hook para controle do tema
 function useTheme() {
@@ -41,31 +43,33 @@ function useTheme() {
 
 // Componente de navegação desktop
 function DesktopNavigation() {
+  const t = useTranslations('navigation')
+  
   return (
     <nav className="hidden md:flex items-center space-x-8">
       <a
         href="#about"
         className="text-sm font-medium hover:text-primary transition-colors"
       >
-        Sobre
+        {t('about')}
       </a>
       <a
         href="#projects"
         className="text-sm font-medium hover:text-primary transition-colors"
       >
-        Projetos
+        {t('projects')}
       </a>
       <a
         href="#services"
         className="text-sm font-medium hover:text-primary transition-colors"
       >
-        Serviços
+        {t('services')}
       </a>
       <a
         href="#contact"
         className="text-sm font-medium hover:text-primary transition-colors"
       >
-        Contato
+        {t('contact')}
       </a>
     </nav>
   );
@@ -74,13 +78,14 @@ function DesktopNavigation() {
 // Componente de navegação mobile
 function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations('navigation')
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild className="md:hidden">
         <Button variant="ghost" size="sm">
           <Menu className="h-5 w-5" />
-          <span className="sr-only">Abrir menu</span>
+          <span className="sr-only">{t('openMenu')}</span>
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="w-[300px] sm:w-[400px]">
@@ -89,25 +94,25 @@ function MobileNavigation() {
             href="#about"
             className="text-lg font-medium hover:text-primary transition-colors"
           >
-            Sobre
+            {t('about')}
           </a>
           <a
             href="#projects"
             className="text-lg font-medium hover:text-primary transition-colors"
           >
-            Projetos
+            {t('projects')}
           </a>
           <a
             href="#services"
             className="text-lg font-medium hover:text-primary transition-colors"
           >
-            Serviços
+            {t('services')}
           </a>
           <a
             href="#contact"
             className="text-lg font-medium hover:text-primary transition-colors"
           >
-            Contato
+            {t('contact')}
           </a>
         </nav>
       </SheetContent>
@@ -119,6 +124,7 @@ function MobileNavigation() {
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { theme, toggleTheme, mounted } = useTheme();
+  const t = useTranslations('navigation');
 
   // Detecta scroll para adicionar backdrop blur
   useEffect(() => {
@@ -178,8 +184,11 @@ export function Header() {
           {/* Navegação Desktop */}
           <DesktopNavigation />
 
-          {/* Controles (Tema + Menu Mobile) */}
-          <div className="flex items-center space-x-4">
+          {/* Controles (Idioma + Tema + Menu Mobile) */}
+          <div className="flex items-center space-x-2">
+            {/* Seletor de idioma */}
+            <LanguageSwitcher />
+            
             {/* Toggle de tema */}
             <Button
               variant="ghost"
@@ -202,7 +211,7 @@ export function Header() {
               ) : (
                 <div className="h-4 w-4" />
               )}
-              <span className="sr-only">Alternar tema</span>
+              <span className="sr-only">{t('toggleTheme')}</span>
             </Button>
 
             {/* Navegação Mobile */}

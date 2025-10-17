@@ -23,72 +23,51 @@ import {
   GraduationCap,
   Briefcase,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-// Dados das skills técnicas
-const technicalSkills = [
-  { name: "React/Next.js", level: 95, icon: Code2, color: "bg-blue-500" },
-  { name: "TypeScript", level: 90, icon: Code2, color: "bg-blue-600" },
-  { name: "Node.js", level: 85, icon: Server, color: "bg-green-500" },
-  { name: "WordPress", level: 92, icon: Globe, color: "bg-blue-700" },
-  { name: "PHP", level: 75, icon: Code2, color: "bg-purple-500" },
-  { name: "Supabase", level: 85, icon: Database, color: "bg-green-600" },
-  { name: "SEO", level: 99, icon: Globe, color: "bg-yellow-500" },
-  { name: "Tailwind CSS", level: 95, icon: Palette, color: "bg-cyan-500" },
-  { name: "React Native", level: 75, icon: Smartphone, color: "bg-blue-400" },
-];
+// Tipos para experiência profissional
+interface Experience {
+  title: string;
+  company: string;
+  period: string;
+  location: string;
+  description: string;
+  achievements: string[];
+}
 
-// Experiências profissionais
-const experiences = [
-  {
-    title: "Desenvolvedor Full Stack Freelancer",
-    company: "Autônomo",
-    period: "2020 - Presente",
-    location: "Rio de Janeiro, RJ",
-    description:
-      "Desenvolvimento de aplicações web e mobile para diversos clientes, especializado em React, Next.js, WordPress e soluções personalizadas.",
-    achievements: [
-      "Mais de 50 projetos entregues com sucesso",
-      "Desenvolvimento de e-commerces e sistemas corporativos",
-      "Integração com APIs e sistemas de pagamento",
-      "Otimização de performance e SEO",
-    ],
-  },
-  {
-    title: "Desenvolvedor WordPress",
-    company: "Agências de Marketing",
-    period: "2023 - Presente",
-    location: "Rio de Janeiro, RJ",
-    description:
-      "Desenvolvimento de temas e plugins personalizados para WordPress, criação de sites institucionais e e-commerces.",
-    achievements: [
-      "Criação de mais de 30 temas personalizados",
-      "Otimização de sites para performance e SEO",
-      "Treinamento de equipe em WordPress",
-    ],
-  },
-];
-
-// Formação acadêmica
-const education = [
-  {
-    degree: "Programador Web, Tecnologia da Informação",
-    institution: "Senac RJ",
-    period: "2019 - 2019",
-    description:
-      "Graduação profissional com 240 horas de duração, focada no desenvolvimento de sites e sistemas web. Durante o curso, adquiri conhecimentos sólidos em HTML5, CSS3, lógica de programação, JavaScript, frameworks modernos (React, Vite, NextJS, Tailwind), PHP, design responsivo e bancos de dados MySQL.",
-  },
-  {
-    degree: "Certificações em Desenvolvimento Web",
-    institution: "Alura e Cursos Online/Bootcamps",
-    period: "2018 - Presente",
-    description:
-      "Formação continuada através da Alura e outras plataformas online, com atualização constante de certificações em React, Node.js, TypeScript, Next.js e tecnologias modernas. O foco do aprendizado está em frameworks, programação, boas práticas e acompanhamento das tendências atuais do desenvolvimento web.",
-  },
-];
+// Tipos para educação
+interface Education {
+  degree: string;
+  institution: string;
+  period: string;
+  description: string;
+}
 
 export function About() {
+  // Hook de tradução
+  const t = useTranslations('about');
+  
   // Gera ID único para este componente
   const componentId = React.useId();
+
+  // Dados das skills técnicas
+  const technicalSkills = [
+    { name: t('skills.items.react'), level: 95, icon: Code2, color: "bg-blue-500" },
+    { name: t('skills.items.typescript'), level: 90, icon: Code2, color: "bg-blue-600" },
+    { name: t('skills.items.nodejs'), level: 85, icon: Server, color: "bg-green-500" },
+    { name: t('skills.items.wordpress'), level: 92, icon: Globe, color: "bg-blue-700" },
+    { name: t('skills.items.php'), level: 75, icon: Code2, color: "bg-purple-500" },
+    { name: t('skills.items.supabase'), level: 85, icon: Database, color: "bg-green-600" },
+    { name: t('skills.items.seo'), level: 99, icon: Globe, color: "bg-yellow-500" },
+    { name: t('skills.items.tailwind'), level: 95, icon: Palette, color: "bg-cyan-500" },
+    { name: t('skills.items.reactnative'), level: 75, icon: Smartphone, color: "bg-blue-400" },
+  ];
+
+  // Dados de experiência traduzidos
+  const experiences = t.raw('experience.jobs') as Experience[];
+  
+  // Dados de educação traduzidos
+  const education = t.raw('education.courses') as Education[];
 
   return (
     <section id="about" className="py-20 bg-muted/30">
@@ -101,11 +80,9 @@ export function About() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Sobre Mim</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Desenvolvedor Full Stack apaixonado por criar soluções digitais
-            inovadoras. Com mais de 5 anos de experiência, especializo-me em
-            tecnologias modernas e entrego projetos de alta qualidade.
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -121,7 +98,7 @@ export function About() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5" />
-                  Perfil Profissional
+                  {t('profile.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -143,39 +120,37 @@ export function About() {
                 </motion.div>
 
                 <p className="text-muted-foreground">
-                  Sou um desenvolvedor Full Stack com sólida experiência em
-                  tecnologias front-end e back-end. Minha paixão é transformar
-                  ideias em soluções digitais funcionais e elegantes.
+                  {t('profile.description')}
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4 text-muted-foreground" />
-                    <span>5+ anos de experiência</span>
+                    <span>{t('profile.experience')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-muted-foreground" />
-                    <span>Rio de Janeiro, RJ</span>
+                    <span>{t('profile.location')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Code2 className="h-4 w-4 text-muted-foreground" />
-                    <span>50+ projetos entregues</span>
+                    <span>{t('profile.projects')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Globe className="h-4 w-4 text-muted-foreground" />
-                    <span>Freelancer</span>
+                    <span>{t('profile.status')}</span>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-2">Especialidades:</h4>
+                  <h4 className="font-semibold mb-2">{t('profile.specialties')}</h4>
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary">Desenvolvimento Web</Badge>
-                    <Badge variant="secondary">E-commerce</Badge>
-                    <Badge variant="secondary">APIs REST</Badge>
-                    <Badge variant="secondary">WordPress</Badge>
-                    <Badge variant="secondary">React/Next.js</Badge>
-                    <Badge variant="secondary">Mobile Apps</Badge>
+                    <Badge variant="secondary">{t('profile.badges.webDev')}</Badge>
+                    <Badge variant="secondary">{t('profile.badges.ecommerce')}</Badge>
+                    <Badge variant="secondary">{t('profile.badges.apis')}</Badge>
+                    <Badge variant="secondary">{t('profile.badges.wordpress')}</Badge>
+                    <Badge variant="secondary">{t('profile.badges.react')}</Badge>
+                    <Badge variant="secondary">{t('profile.badges.mobile')}</Badge>
                   </div>
                 </div>
               </CardContent>
@@ -193,10 +168,10 @@ export function About() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Code2 className="h-5 w-5" />
-                  Skills Técnicas
+                  {t('skills.title')}
                 </CardTitle>
                 <CardDescription>
-                  Principais tecnologias e nível de proficiência
+                  {t('skills.subtitle')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -237,10 +212,10 @@ export function About() {
           className="mb-16"
         >
           <h3 className="text-2xl font-bold mb-8 text-center">
-            Experiência Profissional
+            {t('experience.title')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {experiences.map((exp, index) => (
+            {experiences.map((exp: Experience, index: number) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -275,10 +250,10 @@ export function About() {
                     </p>
                     <div>
                       <h5 className="font-semibold mb-2 text-base">
-                        Principais conquistas:
+                        {t('experience.achievements')}
                       </h5>
                       <ul className="list-disc list-inside space-y-1 text-base text-muted-foreground">
-                        {exp.achievements.map((achievement, i) => (
+                        {exp.achievements.map((achievement: string, i: number) => (
                           <li
                             key={`${componentId}-achievement-${exp.title}-${i}`}
                           >
@@ -301,9 +276,9 @@ export function About() {
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-2xl font-bold mb-8 text-center">Formação</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center">{t('education.title')}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {education.map((edu, index) => (
+            {education.map((edu: Education, index: number) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
