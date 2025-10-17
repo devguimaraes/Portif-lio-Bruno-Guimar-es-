@@ -21,87 +21,70 @@ import {
   Users,
   Settings,
 } from "lucide-react";
-
-// Serviços oferecidos
-const services = [
-  {
-    id: 1,
-    icon: Globe,
-    title: "Desenvolvimento Web",
-    description:
-      "Sites e aplicações web modernas com React, Next.js e tecnologias atuais.",
-    features: [
-      "Design responsivo e moderno",
-      "SEO otimizado",
-      "Performance de alta velocidade",
-      "Integração com APIs",
-      "Painel administrativo",
-    ],
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    id: 2,
-    icon: Database,
-    title: "Sistemas Corporativos",
-    description:
-      "ERPs, CRMs e sistemas de gestão personalizados para sua empresa.",
-    features: [
-      "Módulos personalizados",
-      "Relatórios avançados",
-      "Sistema de permissões",
-      "Integração com sistemas existentes",
-      "Backup automático",
-    ],
-    technologies: ["Node.js", "PostgreSQL", "Redis", "Docker"],
-  },
-  {
-    id: 3,
-    icon: Code2,
-    title: "WordPress Personalizado",
-    description:
-      "Sites WordPress com temas e plugins desenvolvidos sob medida.",
-    features: [
-      "Tema 100% personalizado",
-      "Plugins exclusivos",
-      "Painel administrativo intuitivo",
-      "SEO otimizado",
-      "Treinamento incluído",
-    ],
-    technologies: ["WordPress", "PHP", "MySQL", "JavaScript"],
-  },
-];
-
-// Processo de trabalho
-const workProcess = [
-  {
-    step: 1,
-    title: "Briefing",
-    description: "Entendemos suas necessidades e objetivos",
-    icon: Users,
-  },
-  {
-    step: 2,
-    title: "Planejamento",
-    description: "Criamos a estratégia e arquitetura do projeto",
-    icon: Settings,
-  },
-  {
-    step: 3,
-    title: "Desenvolvimento",
-    description: "Codificamos sua solução com as melhores práticas",
-    icon: Code2,
-  },
-  {
-    step: 4,
-    title: "Entrega",
-    description: "Testamos, otimizamos e colocamos no ar",
-    icon: Rocket,
-  },
-];
+import { useTranslations } from "next-intl";
 
 export function Services() {
+  // Hook de tradução
+  const t = useTranslations('servicesDetailed');
+  
   // Gera ID único para este componente
   const componentId = React.useId();
+
+  // Serviços oferecidos com traduções
+  const services = [
+    {
+      id: 1,
+      icon: Globe,
+      title: t('items.webDevelopment.title'),
+      description: t('items.webDevelopment.description'),
+      features: (t.raw('items.webDevelopment.features') as string[]) || [],
+      technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    },
+    {
+      id: 2,
+      icon: Database,
+      title: t('items.corporateSystems.title'),
+      description: t('items.corporateSystems.description'),
+      features: (t.raw('items.corporateSystems.features') as string[]) || [],
+      technologies: ["Node.js", "PostgreSQL", "Redis", "Docker"],
+    },
+    {
+      id: 3,
+      icon: Code2,
+      title: t('items.wordpressCustom.title'),
+      description: t('items.wordpressCustom.description'),
+      features: (t.raw('items.wordpressCustom.features') as string[]) || [],
+      technologies: ["WordPress", "PHP", "MySQL", "JavaScript"],
+    },
+  ];
+
+  // Processo de trabalho com traduções
+  const workProcess = [
+    {
+      step: 1,
+      title: t('workProcess.steps.briefing.title'),
+      description: t('workProcess.steps.briefing.description'),
+      icon: Users,
+    },
+    {
+      step: 2,
+      title: t('workProcess.steps.planning.title'),
+      description: t('workProcess.steps.planning.description'),
+      icon: Settings,
+    },
+    {
+      step: 3,
+      title: t('workProcess.steps.development.title'),
+      description: t('workProcess.steps.development.description'),
+      icon: Code2,
+    },
+    {
+      step: 4,
+      title: t('workProcess.steps.delivery.title'),
+      description: t('workProcess.steps.delivery.description'),
+      icon: Rocket,
+    },
+  ];
 
   return (
     <section id="services" className="py-20 bg-muted/30">
@@ -114,11 +97,9 @@ export function Services() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Meus Serviços</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('title')}</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ofereço soluções completas de desenvolvimento, desde sites simples
-            até sistemas corporativos complexos, sempre com foco na qualidade e
-            resultados.
+            {t('subtitle')}
           </p>
         </motion.div>
 
@@ -142,7 +123,7 @@ export function Services() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <h5 className="font-semibold mb-2 text-base">Inclui:</h5>
+                    <h5 className="font-semibold mb-2 text-base">{t('labels.includes')}</h5>
                     <ul className="space-y-1">
                       {service.features.map((feature, i) => (
                         <li
@@ -157,7 +138,7 @@ export function Services() {
                   </div>
 
                   <div>
-                    <h5 className="font-semibold mb-2 text-base">Tecnologias:</h5>
+                    <h5 className="font-semibold mb-2 text-base">{t('labels.technologies')}</h5>
                     <div className="flex flex-wrap gap-1">
                       {service.technologies.map((tech) => (
                         <Badge
@@ -185,10 +166,10 @@ export function Services() {
         >
           <div className="text-center mb-12">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Como Trabalhamos
+              {t('workProcess.title')}
             </h3>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Um processo estruturado para garantir o sucesso do seu projeto.
+              {t('workProcess.subtitle')}
             </p>
           </div>
 
@@ -228,17 +209,16 @@ export function Services() {
           className="text-center mt-16 p-8 bg-primary/5 rounded-lg"
         >
           <h3 className="text-2xl font-bold mb-4">
-            Pronto para começar seu projeto?
+            {t('cta.title')}
           </h3>
           <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            Entre em contato para discutirmos sua ideia e criarmos algo incrível
-            juntos.
+            {t('cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" asChild>
               <a href="#contact">
                 <Headphones className="h-4 w-4 mr-2" />
-                Solicitar Orçamento
+                {t('cta.requestQuote')}
               </a>
             </Button>
             <Button size="lg" variant="outline" asChild>
@@ -247,7 +227,7 @@ export function Services() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                WhatsApp
+                {t('cta.whatsapp')}
               </a>
             </Button>
           </div>
