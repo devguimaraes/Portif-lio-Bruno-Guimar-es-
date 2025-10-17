@@ -1,0 +1,491 @@
+{
+  "navigation": {
+    "home": "Início",
+    "about": "Sobre",
+    "services": "Serviços",
+    "projects": "Projetos",
+    "contact": "Contato",
+    "faq": "FAQ",
+    "openMenu": "Abrir menu",
+    "toggleTheme": "Alternar tema"
+  },
+  "language": {
+    "switch": "Trocar idioma"
+  },
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "name": "Bruno Guimarães",
+    "title": "Desenvolvedor Full Stack",
+    "subtitle": "Transformo ideias em soluções digitais inovadoras",
+    "cta": "Vamos conversar",
+    "downloadCv": "Download CV",
+    "availability": "Disponível para novos projetos"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "subtitle": "Desenvolvedor Full Stack apaixonado por criar soluções digitais inovadoras. Com mais de 5 anos de experiência, especializo-me em tecnologias modernas e entrego projetos de alta qualidade.",
+    "profile": {
+      "title": "Perfil Profissional",
+      "description": "Sou um desenvolvedor Full Stack com sólida experiência em tecnologias front-end e back-end. Minha paixão é transformar ideias em soluções digitais funcionais e elegantes.",
+      "experience": "5+ anos de experiência",
+      "location": "Rio de Janeiro, RJ",
+      "projects": "50+ projetos entregues",
+      "status": "Freelancer",
+      "specialties": "Especialidades:",
+      "badges": {
+        "webDev": "Desenvolvimento Web",
+        "ecommerce": "E-commerce",
+        "apis": "APIs REST",
+        "wordpress": "WordPress",
+        "react": "React/Next.js",
+        "mobile": "Mobile Apps"
+      }
+    },
+    "skills": {
+      "title": "Skills Técnicas",
+      "subtitle": "Principais tecnologias e nível de proficiência",
+      "items": {
+        "react": "React/Next.js",
+        "typescript": "TypeScript",
+        "nodejs": "Node.js",
+        "wordpress": "WordPress",
+        "php": "PHP",
+        "supabase": "Supabase",
+        "seo": "SEO",
+        "tailwind": "Tailwind CSS",
+        "reactnative": "React Native"
+      }
+    },
+    "experience": {
+      "title": "Experiência Profissional",
+      "achievements": "Principais conquistas:",
+      "jobs": [
+        {
+          "title": "Desenvolvedor Full Stack Freelancer",
+          "company": "Autônomo",
+          "period": "2020 - Presente",
+          "location": "Rio de Janeiro, RJ",
+          "description": "Desenvolvimento de aplicações web e mobile para diversos clientes, especializado em React, Next.js, WordPress e soluções personalizadas.",
+          "achievements": [
+            "Mais de 50 projetos entregues com sucesso",
+            "Desenvolvimento de e-commerces e sistemas corporativos",
+            "Integração com APIs e sistemas de pagamento",
+            "Otimização de performance e SEO"
+          ]
+        },
+        {
+          "title": "Desenvolvedor WordPress",
+          "company": "Agências de Marketing",
+          "period": "2023 - Presente",
+          "location": "Rio de Janeiro, RJ",
+          "description": "Desenvolvimento de temas e plugins personalizados para WordPress, criação de sites institucionais e e-commerces.",
+          "achievements": [
+            "Criação de mais de 30 temas personalizados",
+            "Otimização de sites para performance e SEO",
+            "Treinamento de equipe em WordPress"
+          ]
+        }
+      ]
+    },
+    "education": {
+      "title": "Formação",
+      "courses": [
+        {
+          "degree": "Programador Web, Tecnologia da Informação",
+          "institution": "Senac RJ",
+          "period": "2019 - 2019",
+          "description": "Graduação profissional com 240 horas de duração, focada no desenvolvimento de sites e sistemas web. Durante o curso, adquiri conhecimentos sólidos em HTML5, CSS3, lógica de programação, JavaScript, frameworks modernos (React, Vite, NextJS, Tailwind), PHP, design responsivo e bancos de dados MySQL."
+        },
+        {
+          "degree": "Certificações em Desenvolvimento Web",
+          "institution": "Alura e Cursos Online/Bootcamps",
+          "period": "2018 - Presente",
+          "description": "Formação continuada através da Alura e outras plataformas online, com atualização constante de certificações em React, Node.js, TypeScript, Next.js e tecnologias modernas. O foco do aprendizado está em frameworks, programação, boas práticas e acompanhamento das tendências atuais do desenvolvimento web."
+        }
+      ]
+    }
+  },
+  "services": {
+    "title": "Serviços",
+    "subtitle": "O que eu ofereço",
+    "webDevelopment": {
+      "title": "Desenvolvimento Web",
+      "description": "Criação de sites e aplicações web modernas, responsivas e otimizadas para performance."
+    },
+    "mobileApps": {
+      "title": "Aplicativos Mobile",
+      "description": "Desenvolvimento de aplicativos nativos e híbridos para iOS e Android."
+    },
+    "uiDesign": {
+      "title": "UI/UX Design",
+      "description": "Design de interfaces intuitivas e experiências de usuário excepcionais."
+    },
+    "consulting": {
+      "title": "Consultoria Tech",
+      "description": "Consultoria especializada em arquitetura de software e melhores práticas de desenvolvimento."
+    }
+  },
+  "projects": {
+    "title": "Projetos",
+    "subtitle": "Meus trabalhos recentes",
+    "viewProject": "Ver Projeto",
+    "viewCode": "Ver Código",
+    "technologies": "Tecnologias utilizadas"
+  },
+  "contact": {
+    "title": "Contato",
+    "subtitle": "Vamos trabalhar juntos",
+    "form": {
+      "name": "Nome",
+      "email": "E-mail",
+      "subject": "Assunto",
+      "message": "Mensagem",
+      "send": "Enviar Mensagem",
+      "sending": "Enviando...",
+      "success": "Mensagem enviada com sucesso!",
+      "error": "Erro ao enviar mensagem. Tente novamente."
+    },
+    "info": {
+      "email": "E-mail",
+      "phone": "Telefone",
+      "location": "Localização",
+      "availability": "Disponibilidade"
+    }
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "subtitle": "Tire suas dúvidas",
+    "questions": {
+      "q1": {
+        "question": "Qual é o prazo médio para desenvolvimento de um projeto?",
+        "answer": "O prazo varia conforme a complexidade do projeto. Projetos simples podem levar de 2-4 semanas, enquanto projetos mais complexos podem levar de 2-6 meses. Sempre forneço um cronograma detalhado após análise dos requisitos."
+      },
+      "q2": {
+        "question": "Você oferece suporte pós-entrega?",
+        "answer": "Sim! Ofereço suporte técnico por 30 dias após a entrega, incluindo correções de bugs e pequenos ajustes. Também disponibilizo planos de manutenção mensal para atualizações e melhorias contínuas."
+      },
+      "q3": {
+        "question": "Quais tecnologias você utiliza?",
+        "answer": "Trabalho principalmente com React, Next.js, Node.js, TypeScript, Python, e bancos de dados como PostgreSQL e MongoDB. Sempre escolho as tecnologias mais adequadas para cada projeto específico."
+      },
+      "q4": {
+        "question": "Como funciona o processo de desenvolvimento?",
+        "answer": "Sigo uma metodologia ágil: 1) Análise de requisitos, 2) Prototipagem e design, 3) Desenvolvimento iterativo, 4) Testes e validação, 5) Deploy e entrega. Mantenho comunicação constante durante todo o processo."
+      },
+      "q5": {
+        "question": "Você trabalha com projetos internacionais?",
+        "answer": "Sim! Tenho experiência com clientes internacionais e trabalho remotamente. Posso me adaptar a diferentes fusos horários e me comunico fluentemente em português e inglês."
+      }
+    }
+  },
+  "footer": {
+    "rights": "Todos os direitos reservados.",
+    "madeWith": "Feito com",
+    "by": "por"
+  },
+  "whatsapp": {
+    "message": "Olá! Gostaria de conversar sobre um projeto."
+  },
+  "language": {
+    "switch": "Mudar idioma",
+    "portuguese": "Português",
+    "english": "English"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "close": "Fechar",
+    "open": "Abrir",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "back": "Voltar",
+    "next": "Próximo",
+    "previous": "Anterior",
+    "more": "Mais",
+    "less": "Menos"
+  },
+  "servicesDetailed": {
+    "title": "Meus Serviços",
+    "subtitle": "Ofereço soluções completas de desenvolvimento, desde sites simples até sistemas corporativos complexos, sempre com foco na qualidade e resultados.",
+    "items": {
+      "webDevelopment": {
+        "title": "Desenvolvimento Web",
+        "description": "Sites e aplicações web modernas com React, Next.js e tecnologias atuais.",
+        "features": [
+          "Design responsivo e moderno",
+          "SEO otimizado",
+          "Performance de alta velocidade",
+          "Integração com APIs",
+          "Painel administrativo"
+        ]
+      },
+      "corporateSystems": {
+        "title": "Sistemas Corporativos",
+        "description": "ERPs, CRMs e sistemas de gestão personalizados para sua empresa.",
+        "features": [
+          "Módulos personalizados",
+          "Relatórios avançados",
+          "Sistema de permissões",
+          "Integração com sistemas existentes",
+          "Backup automático"
+        ]
+      },
+      "wordpressCustom": {
+        "title": "WordPress Personalizado",
+        "description": "Sites WordPress com temas e plugins desenvolvidos sob medida.",
+        "features": [
+          "Tema 100% personalizado",
+          "Plugins exclusivos",
+          "Painel administrativo intuitivo",
+          "SEO otimizado",
+          "Treinamento incluído"
+        ]
+      }
+    },
+    "labels": {
+      "includes": "Inclui:",
+      "technologies": "Tecnologias:"
+    },
+    "workProcess": {
+      "title": "Como Trabalhamos",
+      "subtitle": "Um processo estruturado para garantir o sucesso do seu projeto.",
+      "steps": {
+        "briefing": {
+          "title": "Briefing",
+          "description": "Entendemos suas necessidades e objetivos"
+        },
+        "planning": {
+          "title": "Planejamento",
+          "description": "Criamos a estratégia e arquitetura do projeto"
+        },
+        "development": {
+          "title": "Desenvolvimento",
+          "description": "Codificamos sua solução com as melhores práticas"
+        },
+        "delivery": {
+          "title": "Entrega",
+          "description": "Testamos, otimizamos e colocamos no ar"
+        }
+      }
+    },
+    "cta": {
+      "title": "Pronto para começar seu projeto?",
+      "subtitle": "Entre em contato e vamos transformar sua ideia em realidade",
+      "requestQuote": "Solicitar Orçamento",
+      "whatsapp": "WhatsApp"
+    }
+  },
+  "contact": {
+    "title": "Vamos Conversar?",
+    "subtitle": "Estou sempre aberto a discutir novos projetos, oportunidades criativas ou parcerias. Vamos transformar suas ideias em realidade!",
+    "info": {
+      "email": {
+        "label": "Email",
+        "description": "Respondo em até 2 horas"
+      },
+      "whatsapp": {
+        "label": "WhatsApp",
+        "description": "Disponível das 9h às 18h"
+      },
+      "location": {
+        "label": "Localização",
+        "value": "Rio de Janeiro, RJ",
+        "description": "Atendo presencial e remoto"
+      }
+    },
+    "social": {
+      "github": {
+        "label": "GitHub",
+        "username": "@devguimaraes"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "username": "/in/bcguimaraes"
+      },
+      "instagram": {
+        "label": "Instagram",
+        "username": "@brunoguimraes"
+      }
+    },
+    "form": {
+      "title": "Solicitar Orçamento",
+      "description": "Preencha o formulário abaixo com os detalhes do seu projeto e entrarei em contato em breve.",
+      "success": {
+        "title": "Mensagem Enviada!",
+        "message": "Obrigado pelo contato! Recebi sua mensagem e entrarei em contato em breve para discutirmos seu projeto."
+      },
+      "fields": {
+        "name": {
+          "label": "Nome completo *",
+          "placeholder": "Seu nome"
+        },
+        "email": {
+          "label": "Email *",
+          "placeholder": "seu@email.com"
+        },
+        "subject": {
+          "label": "Assunto *",
+          "placeholder": "Assunto da sua mensagem"
+        },
+        "phone": {
+          "label": "WhatsApp",
+          "placeholder": "(21) 99999-9999"
+        },
+        "project": {
+          "label": "Tipo de projeto *",
+          "placeholder": "Selecione...",
+          "options": {
+            "website": "Site institucional",
+            "ecommerce": "E-commerce",
+            "webapp": "Aplicação web",
+            "mobile": "App mobile",
+            "system": "Sistema corporativo",
+            "other": "Outro"
+          }
+        },
+        "budget": {
+          "label": "Orçamento estimado",
+          "placeholder": "Selecione uma faixa...",
+          "options": {
+            "1000-3000": "R$ 1.000 - R$ 3.000",
+            "3000-5000": "R$ 3.000 - R$ 5.000",
+            "5000-10000": "R$ 5.000 - R$ 10.000",
+            "10000+": "Acima de R$ 10.000",
+            "discuss": "Prefiro discutir"
+          }
+        },
+        "message": {
+          "label": "Detalhes do projeto *",
+          "placeholder": "Descreva seu projeto, objetivos, funcionalidades desejadas, prazo, etc."
+        }
+      },
+      "submit": {
+        "sending": "Enviando...",
+        "send": "Enviar Solicitação"
+      }
+    }
+  },
+  "projects": {
+    "title": "Meus Projetos",
+    "subtitle": "Uma seleção dos meus trabalhos mais recentes, incluindo aplicações web, mobile e soluções corporativas desenvolvidas com as mais modernas tecnologias.",
+    "categories": {
+      "all": "Todos",
+      "web": "Web Apps",
+      "react": "React",
+      "wordpress": "WordPress"
+    },
+    "status": {
+      "completed": "Concluído",
+      "in-progress": "Em Desenvolvimento"
+    },
+    "labels": {
+      "technologies": "Tecnologias:",
+      "features": "Principais features:",
+      "viewProject": "Ver Projeto",
+      "projectPreview": "Preview do Projeto"
+    }
+  },
+  "constants": {
+    "personalInfo": {
+      "title": "Desenvolvedor Frontend & Especialista em SEO Local",
+      "description": "Desenvolvo sites e aplicações web que não apenas funcionam perfeitamente, mas que aparecem no Google e geram clientes reais para seu negócio",
+      "experience": "5+ anos em Desenvolvimento Web | 3+ anos em SEO Local"
+    },
+    "uvp": "Desenvolvo sites e aplicações web que não apenas funcionam perfeitamente, mas que aparecem no Google e geram clientes reais para seu negócio",
+    "metrics": {
+      "projectsCompleted": "50+",
+      "averageROI": "200%",
+      "satisfactionRate": "98%",
+      "averageLighthouse": "87/100"
+    },
+    "techStack": {
+      "frontend": [
+        "HTML5",
+        "CSS3",
+        "JavaScript ES6+",
+        "TypeScript",
+        "React.js",
+        "Vue.js",
+        "Next.js",
+        "Tailwind CSS",
+        "Bootstrap",
+        "SASS",
+        "Styled-Components"
+      ],
+      "wordpress": [
+        "WordPress 6.4+",
+        "Elementor Pro",
+        "Elementor Free",
+        "Gutenberg"
+      ],
+      "backend": [
+        "Python",
+        "PHP",
+        "TypeScript",
+        "Django",
+        "Django REST Framework",
+        "Flask",
+        "Laravel"
+      ],
+      "databases": [
+        "MySQL",
+        "PostgreSQL",
+        "MongoDB",
+        "Supabase"
+      ],
+      "marketing": [
+        "SEO On-page",
+        "SEO Técnico",
+        "Google Analytics 4",
+        "Google Search Console",
+        "Google Tag Manager",
+        "Google Ads"
+      ],
+      "hosting": [
+        "Vercel",
+        "Netlify",
+        "DigitalOcean",
+        "Hostgator",
+        "Hostinger"
+      ],
+      "tools": [
+        "Git",
+        "npm/yarn",
+        "Vite",
+        "Webpack",
+        "Claude Code",
+        "GitHub Copilot",
+        "ChatGPT"
+      ]
+    },
+    "sectors": [
+      "Saúde",
+      "Advocacia",
+      "Marketing",
+      "Educação",
+      "Alimentação",
+      "Engenharia",
+      "Sustentabilidade"
+    ]
+  },
+  "general": {
+    "more": "Ver mais",
+    "less": "Ver menos"
+  },
+  "footer": {
+    "description": "Desenvolvedor Full Stack especializado em React, Next.js, Node.js e WordPress. Criando soluções digitais inovadoras para empresas e startups.",
+    "navigation": {
+      "title": "Navegação",
+      "about": "Sobre",
+      "projects": "Projetos",
+      "services": "Serviços",
+      "contact": "Contato"
+    },
+    "contact": {
+      "title": "Contato"
+    },
+    "copyright": "© {year} Bruno Guimarães. Todos os direitos reservados."
+  }
+}
