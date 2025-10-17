@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 import bundleAnalyzer from "@next/bundle-analyzer";
+import createNextIntlPlugin from 'next-intl/plugin';
+
+// Configuração do plugin next-intl
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   // Otimizações de performance
@@ -54,4 +58,4 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 };
 
-export default bundleAnalyzer({ enabled: process.env.ANALYZE === "true" })(nextConfig);
+export default bundleAnalyzer({ enabled: process.env.ANALYZE === "true" })(withNextIntl(nextConfig));
